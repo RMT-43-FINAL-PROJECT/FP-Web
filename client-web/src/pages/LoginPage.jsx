@@ -1,5 +1,5 @@
 import React from "react";
-import logo from '../assets/logoFix.svg'
+import logo from "../assets/logoFix.svg";
 const LoginPage = () => {
   return (
     <div
@@ -12,13 +12,9 @@ const LoginPage = () => {
       <div className="rounded-xl bg-gray-500 bg-opacity-10 px-16 py-10 shadow-lg backdrop-blur-md max-sm:px-8 border-2 border-white">
         <div className="text-white">
           <div className="mb-8 flex flex-col items-center">
-            <img
-              src={logo}
-              width="200"
-              alt=""
-            />
+            <img src={logo} width="200" alt="" />
             <h1 className="mb-2 text-2xl font-serif">Sahabat Pasar</h1>
-            <span className="text-gray-300 font-mono">Enter Login Details</span>
+            <span className="text-gray-100 font-mono">Enter Login Details</span>
           </div>
           <form action="#">
             <div className="mb-4 text-lg border-2 border-white rounded-3xl">
