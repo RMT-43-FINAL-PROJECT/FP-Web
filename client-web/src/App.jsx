@@ -3,7 +3,7 @@ import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Menu from "./components/menu/Menu";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./pages/login/LoginPage";
 import Home from './pages/home/Home'
 import Footer from "./components/footer/Footer";
 import "./styles/global.scss";
