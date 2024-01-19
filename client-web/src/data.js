@@ -1,3 +1,5 @@
+// sidebar menus
+
 export const menu = [
   {
     id: 1,
@@ -41,138 +43,50 @@ export const menu = [
       },
       {
         id: 4,
-        title: "Posts",
-        url: "/posts",
+        title: "Schedule",
+        url: "/schedule",
         icon: "post2.svg",
-      },
-    ],
-  },
-  {
-    id: 3,
-    title: "general",
-    listItems: [
-      {
-        id: 1,
-        title: "Elements",
-        url: "/",
-        icon: "element.svg",
-      },
-      {
-        id: 2,
-        title: "Notes",
-        url: "/",
-        icon: "note.svg",
-      },
-      {
-        id: 3,
-        title: "Forms",
-        url: "/",
-        icon: "form.svg",
-      },
-      {
-        id: 4,
-        title: "Calendar",
-        url: "/",
-        icon: "calendar.svg",
-      },
-    ],
-  },
-  {
-    id: 4,
-    title: "Maintenance",
-    listItems: [
-      {
-        id: 1,
-        title: "Settings",
-        url: "/",
-        icon: "setting.svg",
-      },
-      {
-        id: 2,
-        title: "Backups",
-        url: "/",
-        icon: "backup.svg",
-      },
-    ],
-  },
-  {
-    id: 5,
-    title: "analytics",
-    listItems: [
-      {
-        id: 1,
-        title: "Charts",
-        url: "/",
-        icon: "chart.svg",
-      },
-      {
-        id: 2,
-        title: "Logs",
-        url: "/",
-        icon: "log.svg",
       },
     ],
   },
 ];
 
-export const topDealUsers = [
+
+// data Sales
+export const topSales = [
   {
     id: 1,
-    img: "https://images.pexels.com/photos/8405873/pexels-photo-8405873.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+    img: "https://i.pinimg.com/564x/92/30/ea/9230eaa33ca625c96c0e85ec0bd6c2d1.jpg",
     username: "Elva McDonald",
-    email: "elva@gmail.com",
-    amount: "3.668",
+    email: "andi@mail.com",
+    amount: "1000",
   },
+];
+export const topOrder = [
   {
-    id: 2,
-    img: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    username: "Linnie Nelson",
-    email: "linnie@gmail.com",
-    amount: "3.256",
+    id: 1,
+    img: "https://i.pinimg.com/564x/bf/06/22/bf0622f3ee09f1ff850dfaa9c8232558.jpg",
+    name: "Indomie Goreng Rendang",
+    soldOut: "5000",
+    price: "117000",
   },
+];
+export const topStore = [
   {
-    id: 3,
-    img: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    username: "Brent Reeves",
-    email: "brent@gmail.com",
-    amount: "2.998",
-  },
-  {
-    id: 4,
-    img: "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    username: "Adeline Watson",
-    email: "adeline@gmail.com",
-    amount: "2.512",
-  },
-  {
-    id: 5,
-    img: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    username: "Juan Harrington",
-    email: "juan@gmail.com",
-    amount: "2.134",
-  },
-  {
-    id: 6,
-    img: "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    username: "Augusta McGee",
-    email: "augusta@gmail.com",
-    amount: "1.932",
-  },
-  {
-    id: 7,
-    img: "https://images.pexels.com/photos/874158/pexels-photo-874158.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    username: "Angel Thomas",
-    email: "angel@gmail.com",
-    amount: "1.560",
+    id: 1,
+    img: "https://lh3.googleusercontent.com/p/AF1QipOE83L2OliXcZV7nczQvFhooFJc7qxtLGb7kYCT=s1360-w1360-h1020",
+    name: "Toko Plastik Morodadi",
+    ownerName: "Bambang",
+    totalOrder: "200k",
   },
 ];
 
 export const chartBoxUser = {
   color: "#8884d8",
   icon: "/userIcon.svg",
-  title: "Total Users",
+  title: "Total Stores",
   number: "11.238",
-  dataKey: "users",
+  dataKey: "stores",
   percentage: 45,
   chartData: [
     { name: "Sun", users: 400 },
@@ -206,14 +120,14 @@ export const chartBoxRevenue = {
   color: "teal",
   icon: "/revenueIcon.svg",
   title: "Total Revenue",
-  number: "$56.432",
+  number: "Rp.100.000.000",
   dataKey: "revenue",
   percentage: -12,
   chartData: [
     { name: "Sun", revenue: 400 },
     { name: "Mon", revenue: 600 },
     { name: "Tue", revenue: 500 },
-    { name: "Wed", revenue: 700 },
+    { name: "Wed", revenue: 1000 },
     { name: "Thu", revenue: 400 },
     { name: "Fri", revenue: 500 },
     { name: "Sat", revenue: 450 },
@@ -222,9 +136,9 @@ export const chartBoxRevenue = {
 export const chartBoxConversion = {
   color: "gold",
   icon: "/conversionIcon.svg",
-  title: "Total Ratio",
-  number: "2.6",
-  dataKey: "ratio",
+  title: "Total Orders",
+  number: "350",
+  dataKey: "Orders",
   percentage: 12,
   chartData: [
     { name: "Sun", ratio: 400 },
