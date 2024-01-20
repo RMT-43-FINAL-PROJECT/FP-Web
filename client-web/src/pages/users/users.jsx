@@ -14,7 +14,7 @@ const Users = () => {
         method: "GET",
         url: "http://localhost:3000/users"
       });
-      console.log("Data API:", data);
+      // console.log("Data API:", data);
       // data pada apinya nested
       setListUsers(data);
     } catch (error) {
@@ -26,12 +26,12 @@ const Users = () => {
     fetchData();
   }, []);
 
-  const displayedKeys = ["id", "photo", "name", "joinDate"];
+  const displayedKeys = ["id", "photo", "name", "email", "joinDate"];
   const columns = listUsers && listUsers.length > 0
     ? displayedKeys.map((key) => ({
         field: key,
         headerName: key.charAt(0).toUpperCase() + key.slice(1),
-        width: key === "photo" ? 150 : 360,
+        width: key === "photo" ? 170 : 300,
         renderCell: (params) => {
           return key === "photo"
             ? <img src={params.value} alt={`User ${params.row.name}`} style={{ maxWidth: "100%", maxHeight: "100%" }} />

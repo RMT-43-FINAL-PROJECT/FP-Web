@@ -9,7 +9,7 @@ import Footer from "./components/footer/Footer";
 import "./styles/global.scss";
 import Products from "./pages/products/Products";
 import Users from "./pages/users/users";
-import Store from "./pages/stores/Store";
+import Stores from "./pages/stores/Stores";
 
 const queryClient = new QueryClient();
 
@@ -63,7 +63,7 @@ function App() {
         // },
         {
           path: "/stores",
-          element: <Store/>
+          element: <Stores/>
         },
       ],
     },
