@@ -1,14 +1,21 @@
-.stores{
-
-    .info{
+.stores {
+    .info {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 20px;
       margin-bottom: 20px;
   
-      button{
+      h1 {
+        margin: 0; /* Remove default margin for h1 */
+      }
+  
+      button {
         padding: 5px;
         cursor: pointer;
       }
     }
+
+    
   }
+  

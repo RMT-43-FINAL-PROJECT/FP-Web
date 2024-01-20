@@ -10,6 +10,8 @@ import "./styles/global.scss";
 import Products from "./pages/products/Products";
 import Users from "./pages/users/users";
 import Stores from "./pages/stores/Stores";
+import Orders from "./pages/orders/Orders";
+import Schedules from "./pages/schedules/Schedules";
 
 const queryClient = new QueryClient();
 
@@ -64,6 +66,22 @@ function App() {
         {
           path: "/stores",
           element: <Stores/>
+        },
+        // {
+        //   path: "/stores/:id",
+        //   element: <Stores/>
+        // },
+        {
+          path: "/orders",
+          element: <Orders/>
+        },
+        // {
+        //   path: "/orders/:id",
+        //   element: <Orders/>
+        // },
+        {
+          path: "/schedules",
+          element: <Schedules/>
         },
       ],
     },
