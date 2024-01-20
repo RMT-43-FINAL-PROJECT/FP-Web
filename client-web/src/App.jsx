@@ -8,6 +8,7 @@ import Home from './pages/home/Home'
 import Footer from "./components/footer/Footer";
 import "./styles/global.scss";
 import Products from "./pages/products/Products";
+import Users from "./pages/users/users";
 
 const queryClient = new QueryClient();
 
@@ -51,10 +52,10 @@ function App() {
         //   path: "/products/:id",
         //   element: <Products />,
         // },
-        // {
-        //   path: "/users",
-        //   element: <Products />,
-        // },
+        {
+          path: "/users",
+          element: <Users/>
+        },
         // {
         //   path: "/usssers/:id",
         //   element: <Products />,
