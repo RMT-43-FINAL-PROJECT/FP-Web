@@ -44,7 +44,7 @@ export const menu = [
       {
         id: 4,
         title: "Stores",
-        url: "/Store",
+        url: "/stores",
         icon: "form.svg",
       },
       {
