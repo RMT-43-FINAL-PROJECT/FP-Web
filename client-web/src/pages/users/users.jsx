@@ -27,23 +27,27 @@ const Users = () => {
   }, []);
 
   const displayedKeys = ["id", "photo", "name", "joinDate"];
-  const columns =
-  listUsers && listUsers.length > 0
+  const columns = listUsers && listUsers.length > 0
     ? displayedKeys.map((key) => ({
         field: key,
         headerName: key.charAt(0).toUpperCase() + key.slice(1),
-        width: 360,
+        width: key === "photo" ? 150 : 360,
+        renderCell: (params) => {
+          return key === "photo"
+            ? <img src={params.value} alt={`User ${params.row.name}`} style={{ maxWidth: "100%", maxHeight: "100%" }} />
+            : params.value;
+        },
       }))
     : [];
 
     const filteredListUsers =
     listUsers &&
-    listUsers.map((product, index) =>
+    listUsers.map((user, index) =>
       displayedKeys.reduce((obj, key) => {
         if (key === "id") {
           obj[key] = index + 1;
         } else {
-          obj[key] = product[key];
+          obj[key] = user[key];
         }
         return obj;
       }, {})

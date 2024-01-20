@@ -24,7 +24,7 @@ const Products = () => {
         method: "GET",
         url: "http://localhost:3000/products"
       });
-      console.log("Data API:", data);
+      // console.log("Data API:", data);
       // data pada apinya nested
       setListProducts(data);
     } catch (error) {
@@ -36,17 +36,18 @@ const Products = () => {
     fetchData();
   }, []);
 
-  const displayedKeys = ["id", "image", "name", "category", "stock", "price", "discQty", "discQty", "isAvailable"];
+  const displayedKeys = ["id", "image", "name", "category", "stock", "price", "discQty", "discPercent", "isAvailable"];
 
-  const columns =
-  listProducts && listProducts.length > 0
+  const columns = listProducts && listProducts.length > 0
     ? displayedKeys.map((key) => ({
         field: key,
         headerName: key.charAt(0).toUpperCase() + key.slice(1),
-        width: 160,
+        width: key === "image" ? 200 : 150,
         renderCell: (params) => {
           return key === "price"
             ? formatPriceToRupiah(params.value)
+            : key === "image"
+            ? <img src={params.value} alt={params.row.name} style={{ maxWidth: "100%", maxHeight: "100%" }} />
             : params.value;
         },
       }))
