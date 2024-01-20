@@ -7,6 +7,7 @@ import LoginPage from "./pages/login/LoginPage";
 import Home from './pages/home/Home'
 import Footer from "./components/footer/Footer";
 import "./styles/global.scss";
+import Products from "./pages/products/Products";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,22 @@ function App() {
           path: "/",
           element: <Home />,
         },
+        {
+          path: "/products",
+          element: <Products />,
+        },
+        // {
+        //   path: "/products/:id",
+        //   element: <Products />,
+        // },
+        // {
+        //   path: "/users",
+        //   element: <Products />,
+        // },
+        // {
+        //   path: "/usssers/:id",
+        //   element: <Products />,
+        // },
       ],
     },
   ]);
