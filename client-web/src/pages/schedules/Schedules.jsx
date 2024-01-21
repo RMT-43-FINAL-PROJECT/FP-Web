@@ -9,8 +9,6 @@ const Schedules = () => {
   const [open, setOpen] = useState(false);
   const [lisSchedules, setListSchedules] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [storeData, setStoreData] = useState({});
-  const [userData, setUserData] = useState({});
 
   const fetchSchedules = async () => {
     try {
