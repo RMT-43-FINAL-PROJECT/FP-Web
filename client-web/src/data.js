@@ -87,7 +87,7 @@ export const topStore = [
   },
 ];
 
-export const chartBoxUser = {
+export const chartBoxStores = {
   color: "#8884d8",
   icon: "/userIcon.svg",
   title: "Total Stores",
@@ -139,7 +139,7 @@ export const chartBoxRevenue = {
     { name: "Sat", revenue: 450 },
   ],
 };
-export const chartBoxConversion = {
+export const chartBoxOrders = {
   color: "gold",
   icon: "/conversionIcon.svg",
   title: "Total Orders",
