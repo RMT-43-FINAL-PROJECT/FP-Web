@@ -7,7 +7,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import Spinner from "../../components/spinner/Spinner";
 
-const formatPriceToRupiah = (price) => {
+export const formatPriceToRupiah = (price) => {
   return new Intl.NumberFormat("id-ID", {
     style: "currency",
     currency: "IDR",
@@ -25,7 +25,7 @@ const Products = () => {
         method: "GET",
         url: "http://localhost:3000/products",
       });
-      // console.log("Data API:", data);
+      console.log("Data API:", data);
       // data pada apinya nested
       setTimeout(() => {
         setListProducts(data);

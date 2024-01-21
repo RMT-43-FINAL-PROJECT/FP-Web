@@ -8,10 +8,10 @@ import TopStore from "../../components/topStore/TopStore";
 import {
   barChartBoxRevenue,
   barChartBoxVisit,
-  chartBoxConversion,
+  chartBoxOrders,
   chartBoxProduct,
   chartBoxRevenue,
-  chartBoxUser,
+  chartBoxStores,
 } from "../../data";
 import "./home.scss";
 
@@ -30,15 +30,17 @@ const Home = () => {
       <div className="box box4">
         <PieChartBox />
       </div>
+            {/* chart store */}
       <div className="box box2">
-        <ChartBox {...chartBoxUser} />
+        <ChartBox {...chartBoxStores} />
       </div>
+                  {/* chart product */}
       <div className="box box3">
         <ChartBox {...chartBoxProduct} />
       </div>
-
+            {/* chart order */}
       <div className="box box5">
-        <ChartBox {...chartBoxConversion} />
+        <ChartBox {...chartBoxOrders} />
       </div>
       <div className="box box6">
         <ChartBox {...chartBoxRevenue} />
