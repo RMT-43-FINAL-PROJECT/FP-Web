@@ -16,7 +16,7 @@ const Users = () => {
         method: "GET",
         url: "http://localhost:3000/users",
       });
-      // console.log("Data API:", data);
+      console.log("Data API:", data);
       // data pada apinya nested
       setTimeout(() => {
         setListUsers(data);
