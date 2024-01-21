@@ -37,8 +37,10 @@ const Orders = () => {
       setStoreData(stores);
       setUserData(users);
 
-      setListOrders(data);
-      setLoading(false);
+      setTimeout(() => {
+        setListOrders(data);
+        setLoading(false);
+      }, 300);
     } catch (error) {
       console.log(error.message);
     }
