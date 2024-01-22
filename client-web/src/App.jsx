@@ -12,6 +12,9 @@ import Users from "./pages/users/users";
 import Stores from "./pages/stores/Stores";
 import Orders from "./pages/orders/Orders";
 import Schedules from "./pages/schedules/Schedules";
+import DetailPage from "./components/detailPage/DetailPage";
+import Product from "./pages/singleProduct/singleProduct";
+import SingleProduct from "./pages/singleProduct/singleProduct";
 
 const queryClient = new QueryClient();
 
@@ -51,10 +54,10 @@ function App() {
           path: "/products",
           element: <Products />,
         },
-        // {
-        //   path: "/products/:id",
-        //   element: <Products />,
-        // },
+        {
+          path: "/products/:id",
+          element: <SingleProduct />,
+        },
         {
           path: "/users",
           element: <Users/>

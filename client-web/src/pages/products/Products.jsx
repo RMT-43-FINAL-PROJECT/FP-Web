@@ -23,14 +23,20 @@ const Products = () => {
     try {
       const { data } = await axios({
         method: "GET",
-        url: "http://localhost:3000/products",
+        url: import.meta.env.VITE_BASE_URL + "/products",
+        headers: {
+          "ngrok-skip-browser-warning": "69420",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWE3ZDVkZWU5MzVjZjc3MzAwODg2OGEiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwNTkwMzk0N30.w37kI8OsYUzGOxCq776J8LEZeJrGMDIbr-5StCz0VC0"
+        },
       });
       console.log("Data API:", data);
+      const productsWithIds = data.map((product, index) => ({
+        ...product,
+        id: index + 1,
+      }));
       // data pada apinya nested
-      setTimeout(() => {
-        setListProducts(data);
+        setListProducts(productsWithIds);
         setLoading(false);
-      }, 300);
     } catch (error) {
       console.log(error.message);
     }
@@ -56,8 +62,8 @@ const Products = () => {
     listProducts && listProducts.length > 0
       ? displayedKeys.map((key) => ({
           field: key,
-          headerName: key.charAt(0).toUpperCase() + key.slice(1),
-          width: key === "image" ? 200 : 150,
+          headerName: key === "isAvailable" ? "Status" : key.charAt(0).toUpperCase() + key.slice(1),
+          width: key === "image" ? 170 : 150,
           renderCell: (params) => {
             return key === "price" ? (
               formatPriceToRupiah(params.value)
@@ -67,6 +73,8 @@ const Products = () => {
                 alt={params.row.name}
                 style={{ maxWidth: "100%", maxHeight: "100%" }}
               />
+            ) : key === "isAvailable" ? (
+              params.value ? "In Stock" : "Out of Stock"
             ) : (
               params.value
             );
@@ -74,20 +82,7 @@ const Products = () => {
         }))
       : [];
 
-  // const filteredListProducts =
-  //   listProducts &&
-  //   listProducts.map((product, index) =>
-  //     displayedKeys.reduce((obj, key) => {
-  //       if (key === "id") {
-  //         obj[key] = index + 1;
-  //       } else if (key === "isAvailable") {
-  //         obj[key] = product[key] ? "In Stock" : "Out of Stock";
-  //       } else {
-  //         obj[key] = product[key];
-  //       }
-  //       return obj;
-  //     }, {})
-  //   );
+
 
   return (
     <div className="products">
