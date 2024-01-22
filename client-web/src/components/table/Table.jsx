@@ -14,9 +14,11 @@ const Table = (props) => {
     headerName: "Action",
     width: 200,
     renderCell: (params) => {
+      console.log("EntityType:", props.entityType);
+      console.log("Row ID:", params.row._id);
       return (
         <div className="action">
-          <Link to={`/${props.slug}/${params.row.id}`}>
+          <Link to={`/${props.slug}/${params.row._id}`}>
             <img src="/view.svg" alt="" />
           </Link>
           <div className="delete" onClick={() => handleDelete(params.row.id)}>

@@ -14,7 +14,11 @@ const Users = () => {
     try {
       const { data } = await axios({
         method: "GET",
-        url: "https://f162-2001-448a-10b0-3db1-5032-3503-3f18-bfb6.ngrok-free.app/users"
+        url: import.meta.env.VITE_BASE_URL + "/users",
+        headers: {
+          "ngrok-skip-browser-warning": "69420",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWE3ZDVkZWU5MzVjZjc3MzAwODg2OGEiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwNTkwMzk0N30.w37kI8OsYUzGOxCq776J8LEZeJrGMDIbr-5StCz0VC0"
+        },
       });
       console.log("Data API:", data);
       // data pada apinya nested
