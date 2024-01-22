@@ -20,6 +20,7 @@ const Schedules = () => {
           Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
       });
+      // console.log("data api", data);
 
       setTimeout(() => {
         setListSchedules(data);
@@ -35,7 +36,7 @@ const Schedules = () => {
   }, []);
 
   const displayedKeys = [
-    "id",
+    "_id",
     "storeName",
     "userName",
     "address",
@@ -59,7 +60,7 @@ const Schedules = () => {
   const filteredSchedules =
     lisSchedules &&
     lisSchedules.map((schedule, index) => {
-      const { id, storeInformations, userInformations, time, isCompleted } =
+      const { _id, storeInformations, userInformations, time, isCompleted } =
         schedule;
 
       const storeName = storeInformations?.name || "Unknown Store";
@@ -68,7 +69,7 @@ const Schedules = () => {
       const status = isCompleted ? "Completed" : "Not Completed";
 
       return {
-        id: index + 1,
+        _id,
         storeName,
         userName,
         address,
@@ -76,6 +77,8 @@ const Schedules = () => {
         status,
       };
     });
+    console.log("response",filteredSchedules);
+
 
   return (
     <div className="products">

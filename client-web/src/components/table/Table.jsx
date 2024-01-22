@@ -33,6 +33,7 @@ const Table = (props) => {
         className="dataGrid"
         rows={props.rows}
         columns={[...props.columns, actionColumn]}
+        getRowId={(row) => row._id}
         initialState={{
           pagination: {
             paginationModel: {
