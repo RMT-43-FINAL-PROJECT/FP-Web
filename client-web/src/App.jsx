@@ -17,6 +17,7 @@ import Product from "./pages/singleProduct/singleProduct";
 import SingleProduct from "./pages/singleProduct/singleProduct";
 import SingleStore from "./pages/singleStore/SingleStore";
 import SingleUser from "./pages/singleUser/SingleUser";
+import SingleSchedule from "./pages/singleSchedule/SingleSchedule";
 
 const queryClient = new QueryClient();
 
@@ -106,6 +107,10 @@ function App() {
         {
           path: "/schedules",
           element: <Schedules/>
+        },
+        {
+          path: "/schedules/:scheduleId",
+          element: <SingleSchedule/>
         },
       ],
     },
