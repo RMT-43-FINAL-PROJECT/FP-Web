@@ -18,6 +18,7 @@ import SingleProduct from "./pages/singleProduct/singleProduct";
 import SingleStore from "./pages/singleStore/SingleStore";
 import SingleUser from "./pages/singleUser/SingleUser";
 import SingleSchedule from "./pages/singleSchedule/SingleSchedule";
+import SingleOrder from "./pages/singleOrder/SingleOrder";
 
 const queryClient = new QueryClient();
 
@@ -100,10 +101,10 @@ function App() {
           path: "/orders",
           element: <Orders/>
         },
-        // {
-        //   path: "/orders/:id",
-        //   element: <Orders/>
-        // },
+        {
+          path: "/orders/:id",
+          element: <SingleOrder/>
+        },
         {
           path: "/schedules",
           element: <Schedules/>

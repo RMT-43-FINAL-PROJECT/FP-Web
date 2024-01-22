@@ -38,7 +38,7 @@ const Orders = () => {
   }, []);
 
   const displayedKeys = [
-    "id",
+    "_id",
     "storeName",
     "userName",
     "totalBill",
@@ -73,8 +73,7 @@ const Orders = () => {
       const statusText = status === "confirmed" ? "Confirmed" : "Pending";
 
       return {
-        id: index + 1,
-        storeId,
+        _id,
         storeName: storeName || "Unknown Store",
         userId,
         userName: userName || "Unknown User",
