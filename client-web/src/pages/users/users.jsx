@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Spinner from "../../components/spinner/Spinner";
 import UserTable from "../../components/userTable/UserTable";
+import AddUser from "../addUser/AddUser";
 
 const Users = () => {
   const [open, setOpen] = useState(false);
@@ -89,7 +90,7 @@ const Users = () => {
           rows={listUsers}
         />
       )}
-      {/* {open && <Add slug="product" columns={columns} setOpen={setOpen} />} */}
+      {open && <AddUser slug="product" columns={columns} setOpen={setOpen} />}
     </div>
   );
 };
