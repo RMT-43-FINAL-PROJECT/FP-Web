@@ -1,55 +1,101 @@
 import React from "react";
 import logo from "../../assets/logoFix.svg";
 import "./LoginPage.scss"; // Import sass
-import { useNavigate } from "react-router";
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-  const navigate = useNavigate()
+  const [input, setInput] = useState({
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    // console.log(name, value);
+
+    setInput({
+      ...input,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await axios({
+        method: "post",
+        url: import.meta.env.VITE_BASE_URL + "/users/login",
+        data: input,
+      });
+      console.log(data);
+      localStorage.access_token = data.access_token;
+      localStorage.setItem("_id", data._id);
+      // console.log(data);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(input);
 
   return (
-    <form className="form" autoComplete="off">
-    <div className="control">
-      <h1>Sign In</h1>
-    </div>
-    <div className="control block-cube block-input">
-      <input name="username" type="text" placeholder="Username" />
-      <div className="bg-top">
-        <div className="bg-inner"></div>
+    <form className="form" autoComplete="off" onSubmit={handleSubmit}>
+      <div className="control">
+        <h1>Sign In</h1>
       </div>
-      <div className="bg-right">
-        <div className="bg-inner"></div>
+      <div className="control block-cube block-input">
+        <input
+          type="text"
+          name="email"
+          id="email"
+          onChange={handleChange}
+          placeholder="Username"
+        />
+        <div className="bg-top">
+          <div className="bg-inner"></div>
+        </div>
+        <div className="bg-right">
+          <div className="bg-inner"></div>
+        </div>
+        <div className="bg">
+          <div className="bg-inner"></div>
+        </div>
       </div>
-      <div className="bg">
-        <div className="bg-inner"></div>
+      <div className="control block-cube block-input">
+        <input
+          name="password"
+          type="password"
+          id="password"
+          onChange={handleChange}
+          placeholder="Password"
+        />
+        <div className="bg-top">
+          <div className="bg-inner"></div>
+        </div>
+        <div className="bg-right">
+          <div className="bg-inner"></div>
+        </div>
+        <div className="bg">
+          <div className="bg-inner"></div>
+        </div>
       </div>
-    </div>
-    <div className="control block-cube block-input">
-      <input name="password" type="password" placeholder="Password" />
-      <div className="bg-top">
-        <div className="bg-inner"></div>
-      </div>
-      <div className="bg-right">
-        <div className="bg-inner"></div>
-      </div>
-      <div className="bg">
-        <div className="bg-inner"></div>
-      </div>
-    </div>
-    <button className="btn block-cube block-cube-hover" type="button" onClick={() => {
-navigate('/')
-    }}>
-      <div className="bg-top">
-        <div className="bg-inner"></div>
-      </div>
-      <div className="bg-right">
-        <div className="bg-inner"></div>
-      </div>
-      <div className="bg">
-        <div className="bg-inner"></div>
-      </div>
-      <div className="text">Log In</div>
-    </button>
-  </form>
+      <button className="btn block-cube block-cube-hover" type="submit">
+        <div className="bg-top">
+          <div className="bg-inner"></div>
+        </div>
+        <div className="bg-right">
+          <div className="bg-inner"></div>
+        </div>
+        <div className="bg">
+          <div className="bg-inner"></div>
+        </div>
+        <div className="text">Log In</div>
+      </button>
+    </form>
   );
 };
 

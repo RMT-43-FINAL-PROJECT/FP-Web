@@ -1,4 +1,4 @@
-import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Outlet, RouterProvider, createBrowserRouter, redirect } from "react-router-dom";
 
 import Navbar from "./components/navbar/Navbar";
 import Menu from "./components/menu/Menu";
@@ -37,14 +37,33 @@ function App() {
         </div>
     );
   };
+
+  const authHome = () => {
+    const access_token = localStorage.access_token
+    if(!access_token) {
+      throw redirect('/login')
+    }
+    return null
+  }
+
+  const authLogin = () => {
+    const access_token = localStorage.access_token
+    if(access_token) {
+      throw redirect('/')
+    }
+    return null
+  }
+
   const router = createBrowserRouter([
     {
       path: "/login",
       element: <LoginPage />,
+      loader: authLogin
     },
     {
       path: "/",
       element: <Layout />,
+      loader: authHome,
       children: [
         {
           path: "/",
