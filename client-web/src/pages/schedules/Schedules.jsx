@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import Table from "../../components/table/Table";
 import axios from "axios";
 import { useEffect } from "react";
@@ -12,8 +12,8 @@ const Schedules = () => {
 
   const fetchSchedules = async () => {
     try {
-      const { data } = await axios.get('http://localhost:3000/schedules');
-      console.log('Data API:', data);
+      const { data } = await axios.get("http://localhost:3000/schedules");
+      console.log("Data API:", data);
 
       setTimeout(() => {
         setListSchedules(data);
@@ -28,36 +28,38 @@ const Schedules = () => {
     fetchSchedules();
   }, []);
 
-  const displayedKeys = ['id', 'storeName', 'userName', 'address', 'time', 'status'];
+  const displayedKeys = [
+    "id",
+    "storeName",
+    "userName",
+    "address",
+    "time",
+    "status",
+  ];
 
   const columns = displayedKeys.map((key) => ({
     field: key,
     headerName:
-      key === 'storeName'
-        ? 'Store Name'
-        : key === 'userName'
-        ? 'User Name'
-        : key === 'address'
-        ? 'address'
+      key === "storeName"
+        ? "Store Name"
+        : key === "userName"
+        ? "User Name"
+        : key === "address"
+        ? "address"
         : key.charAt(0).toUpperCase() + key.slice(1),
-    width: key === 'status' ? 200 : 220,
+    width: key === "status" ? 200 : 220,
   }));
 
   const filteredSchedules =
-  lisSchedules &&
-  lisSchedules.map((schedule, index) => {
-      const {
-        id,
-        storeInformations,
-        userInformations,
-        time,
-        isCompleted,
-      } = schedule;
+    lisSchedules &&
+    lisSchedules.map((schedule, index) => {
+      const { id, storeInformations, userInformations, time, isCompleted } =
+        schedule;
 
-      const storeName = storeInformations?.name || 'Unknown Store';
-      const userName = userInformations?.name || 'Unknown User';
-      const address = storeInformations?.address || 'Unknown Address';
-      const status = isCompleted ? 'Completed' : 'Not Completed';
+      const storeName = storeInformations?.name || "Unknown Store";
+      const userName = userInformations?.name || "Unknown User";
+      const address = storeInformations?.address || "Unknown Address";
+      const status = isCompleted ? "Completed" : "Not Completed";
 
       return {
         id: index + 1,
@@ -69,8 +71,8 @@ const Schedules = () => {
       };
     });
 
-    return (
-      <div className="products">
+  return (
+    <div className="products">
       <div className="info">
         <h1>Schedules Management</h1>
         <button onClick={() => setOpen(true)}>Add New Schedule</button>
@@ -78,13 +80,13 @@ const Schedules = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <Table slug="products" columns={columns} rows={filteredSchedules} />
+        <Table slug="schedules" columns={columns} rows={filteredSchedules} />
       )}
 
       {/* Add your modal or form component here */}
       {/* {open && <Add slug="product" columns={columns} setOpen={setOpen} />} */}
     </div>
   );
-}
+};
 
-export default Schedules
+export default Schedules;

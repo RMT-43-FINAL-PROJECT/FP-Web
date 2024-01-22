@@ -48,7 +48,7 @@ export const menu = [
         icon: "form.svg",
       },
       {
-        id: 4,
+        id: 5,
         title: "Schedules",
         url: "/schedules",
         icon: "calendar.svg",

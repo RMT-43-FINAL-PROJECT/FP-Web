@@ -14,14 +14,21 @@ const Stores = () => {
     try {
       const { data } = await axios({
         method: "GET",
-        url: "http://localhost:3000/stores",
+        url: import.meta.env.VITE_BASE_URL + "/stores",
+        headers: {
+          "ngrok-skip-browser-warning": "69420"
+        },
       });
       console.log("Data API:", data);
+      const storesWithIds = data.map((store, index) => ({
+        ...store,
+        id: index + 1,
+      }));
       // data pada apinya nested
-      setTimeout(() => {
-        setListStores(data);
+
+        setListStores(storesWithIds);
         setLoading(false);
-      }, 300);
+
     } catch (error) {
       console.log(error.message);
       setLoading(false);
@@ -32,7 +39,7 @@ const Stores = () => {
     fetchData();
   }, []);
 
-  const displayedKeys = ["id", "photo", "name", "Total Order", "joinDate"];
+  const displayedKeys = ["id", "photo", "name", "confirmedOrderValue", "joinDate"];
 
   const columns =
     listStores && listStores.length > 0
@@ -54,18 +61,18 @@ const Stores = () => {
         }))
       : [];
 
-  const filteredListStores =
-    listStores &&
-    listStores.map((store, index) =>
-      displayedKeys.reduce((obj, key) => {
-        if (key === "id") {
-          obj[key] = index + 1;
-        } else {
-          obj[key] = store[key];
-        }
-        return obj;
-      }, {})
-    );
+  // const filteredListStores =
+  //   listStores &&
+  //   listStores.map((store, index) =>
+  //     displayedKeys.reduce((obj, key) => {
+  //       if (key === "id") {
+  //         obj[key] = index + 1;
+  //       } else {
+  //         obj[key] = store[key];
+  //       }
+  //       return obj;
+  //     }, {})
+  //   );
 
   return (
     <div className="products">
@@ -76,7 +83,7 @@ const Stores = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <Table slug="stores" columns={columns} rows={filteredListStores} />
+        <Table slug="stores" columns={columns} rows={listStores} />
       )}
       {/* Add your modal or form component here */}
       {/* {open && <Add slug="product" columns={columns} setOpen={setOpen} />} */}
