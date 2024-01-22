@@ -2,8 +2,8 @@ import React from "react";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
-import Table from "../../components/table/Table";
 import Spinner from "../../components/spinner/Spinner";
+import UserTable from "../../components/userTable/UserTable";
 
 const Users = () => {
   const [open, setOpen] = useState(false);
@@ -17,13 +17,17 @@ const Users = () => {
         url: import.meta.env.VITE_BASE_URL + "/users",
         headers: {
           "ngrok-skip-browser-warning": "69420",
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWE3ZDVkZWU5MzVjZjc3MzAwODg2OGEiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwNTkwMzk0N30.w37kI8OsYUzGOxCq776J8LEZeJrGMDIbr-5StCz0VC0"
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
       });
       console.log("Data API:", data);
+      const usersWithIds = data.map((user, index) => ({
+        ...user,
+        id: index + 1,
+      }));
       // data pada apinya nested
       setTimeout(() => {
-        setListUsers(data);
+        setListUsers(usersWithIds);
         setLoading(false);
       }, 300);
     } catch (error) {
@@ -56,18 +60,18 @@ const Users = () => {
         }))
       : [];
 
-  const filteredListUsers =
-    listUsers &&
-    listUsers.map((user, index) =>
-      displayedKeys.reduce((obj, key) => {
-        if (key === "id") {
-          obj[key] = index + 1;
-        } else {
-          obj[key] = user[key];
-        }
-        return obj;
-      }, {})
-    );
+  // const filteredListUsers =
+  //   listUsers &&
+  //   listUsers.map((user, index) =>
+  //     displayedKeys.reduce((obj, key) => {
+  //       if (key === "_id") {
+  //         obj[key] = index + 1;
+  //       } else {
+  //         obj[key] = user[key];
+  //       }
+  //       return obj;
+  //     }, {})
+  //   );
 
   return (
     <div className="products">
@@ -78,9 +82,13 @@ const Users = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <Table slug="users" columns={columns} rows={filteredListUsers} />
+        <UserTable
+          baseRoute="users"
+          entityRoute="finduser"
+          columns={columns}
+          rows={listUsers}
+        />
       )}
-      {/* Add your modal or form component here */}
       {/* {open && <Add slug="product" columns={columns} setOpen={setOpen} />} */}
     </div>
   );

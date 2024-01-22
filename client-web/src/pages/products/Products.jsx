@@ -26,7 +26,7 @@ const Products = () => {
         url: import.meta.env.VITE_BASE_URL + "/products",
         headers: {
           "ngrok-skip-browser-warning": "69420",
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWE3ZDVkZWU5MzVjZjc3MzAwODg2OGEiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwNTkwMzk0N30.w37kI8OsYUzGOxCq776J8LEZeJrGMDIbr-5StCz0VC0"
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
       });
       console.log("Data API:", data);
@@ -35,8 +35,8 @@ const Products = () => {
         id: index + 1,
       }));
       // data pada apinya nested
-        setListProducts(productsWithIds);
-        setLoading(false);
+      setListProducts(productsWithIds);
+      setLoading(false);
     } catch (error) {
       console.log(error.message);
     }
@@ -62,7 +62,10 @@ const Products = () => {
     listProducts && listProducts.length > 0
       ? displayedKeys.map((key) => ({
           field: key,
-          headerName: key === "isAvailable" ? "Status" : key.charAt(0).toUpperCase() + key.slice(1),
+          headerName:
+            key === "isAvailable"
+              ? "Status"
+              : key.charAt(0).toUpperCase() + key.slice(1),
           width: key === "image" ? 170 : 150,
           renderCell: (params) => {
             return key === "price" ? (
@@ -74,15 +77,17 @@ const Products = () => {
                 style={{ maxWidth: "100%", maxHeight: "100%" }}
               />
             ) : key === "isAvailable" ? (
-              params.value ? "In Stock" : "Out of Stock"
+              params.value ? (
+                "In Stock"
+              ) : (
+                "Out of Stock"
+              )
             ) : (
               params.value
             );
           },
         }))
       : [];
-
-
 
   return (
     <div className="products">
@@ -96,7 +101,6 @@ const Products = () => {
         <Table slug="products" columns={columns} rows={listProducts} />
       )}
 
-      {/* Add your modal or form component here */}
       {/* {open && <Add slug="product" columns={columns} setOpen={setOpen} />} */}
     </div>
   );

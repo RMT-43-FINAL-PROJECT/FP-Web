@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
+
   return (
     <div className="navbar">
       <div className="logo">
@@ -16,9 +17,9 @@ const Navbar = () => {
         <button
           className="logout-btn"
           onClick={() => {
-            navigate("/login");
             localStorage.removeItem("access_token")
             localStorage.removeItem("_id")
+            navigate("/login");
           }}
         >
           Logout
