@@ -16,7 +16,7 @@ const Stores = () => {
         method: "GET",
         url: import.meta.env.VITE_BASE_URL + "/stores",
         headers: {
-          "ngrok-skip-browser-warning": "69420"
+          "ngrok-skip-browser-warning": "69420",
         },
       });
       console.log("Data API:", data);
@@ -26,9 +26,8 @@ const Stores = () => {
       }));
       // data pada apinya nested
 
-        setListStores(storesWithIds);
-        setLoading(false);
-
+      setListStores(storesWithIds);
+      setLoading(false);
     } catch (error) {
       console.log(error.message);
       setLoading(false);
@@ -39,7 +38,13 @@ const Stores = () => {
     fetchData();
   }, []);
 
-  const displayedKeys = ["id", "photo", "name", "confirmedOrderValue", "joinDate"];
+  const displayedKeys = [
+    "id",
+    "photo",
+    "name",
+    "confirmedOrderValue",
+    "joinDate",
+  ];
 
   const columns =
     listStores && listStores.length > 0
@@ -85,7 +90,6 @@ const Stores = () => {
       ) : (
         <Table slug="stores" columns={columns} rows={listStores} />
       )}
-      {/* Add your modal or form component here */}
       {/* {open && <Add slug="product" columns={columns} setOpen={setOpen} />} */}
     </div>
   );

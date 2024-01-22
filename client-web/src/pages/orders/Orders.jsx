@@ -10,8 +10,7 @@ const Orders = () => {
   const [open, setOpen] = useState(false);
   const [listOrders, setListOrders] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [storeData, setStoreData] = useState({});
-  const [userData, setUserData] = useState({});
+
 
   const fetchOrders = async () => {
     try {
@@ -20,7 +19,7 @@ const Orders = () => {
         url: import.meta.env.VITE_BASE_URL + "/orders",
         headers: {
           "ngrok-skip-browser-warning": "69420",
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWE3ZDVkZWU5MzVjZjc3MzAwODg2OGEiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwNTkwMzk0N30.w37kI8OsYUzGOxCq776J8LEZeJrGMDIbr-5StCz0VC0"
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
       });
       console.log("Data API:", data);
@@ -95,7 +94,6 @@ const Orders = () => {
       ) : (
         <Table slug="orders" columns={columns} rows={filteredListOrders} />
       )}
-      {/* Add your modal or form component here */}
       {/* {open && <Add slug="product" columns={columns} setOpen={setOpen} />} */}
     </div>
   );

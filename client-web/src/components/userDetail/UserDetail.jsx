@@ -1,9 +1,7 @@
-import "./detailPage.scss";
+import React from "react";
+import "./userDetail.scss";
 
-const DetailPage = ({ listProducts }) => {
-  const getStatus = () => {
-    return listProducts.isAvailable ? "In Stock" : "Out of Stock";
-  };
+const UserDetail = ({ userResponse }) => {
   return (
     <div className="products">
       <div className="">
@@ -11,49 +9,42 @@ const DetailPage = ({ listProducts }) => {
           <div className="container px-6 py-10 mx-auto">
             <div className="mt-8 lg:flex lg:items-center">
               <img
-                className="w-full h-65 lg:w-1/2 lg:h-70 rounded-xl mb-6 lg:mb-0"
-                src={listProducts.image}
-                alt={listProducts.name}
+                className="h-65 lg:w-1/2 lg:h-70 rounded-xl mb-6 lg:mb-0"
+                src={userResponse.photo}
+                alt=""
               />
 
               <div className="lg:w-1/2 lg:ml-6">
                 <p className="text-lg text-black uppercase underline font-bold">
-                  Product Detail
+                  User Detail
                 </p>
 
                 <a
                   href="#"
                   className="block mt-4 text-3xl font-semibold text-gray-800 hover:underline dark:text-black md:text-4xl"
                 >
-                  {listProducts.name}
+                  {userResponse.name}
                 </a>
 
                 <div className="card-description mt-3 rounded-md">
                   <p className="text-lg text-gray-700 dark:text-black md:text-2xl underline">
-                    {listProducts.category}
+                    {" "}
+                    Since: {userResponse.joinDate}
                   </p>
-                  <h1 className="text-lg text-gray-700 dark:text-black font-bold">
-                    {getStatus()}
-                  </h1>
                 </div>
                 <br />
                 <div>
-                  <p className="text-lg text-gray-700 dark:text-black font-bold">
-                    Price:
+                  <h1 className="text-lg text-gray-700 dark:text-black font-bold">
+                    total Sales:{" "}
                     {new Intl.NumberFormat("id-ID", {
                       style: "currency",
                       currency: "IDR",
-                    }).format(listProducts.price)}
-                  </p>
-                  <h1 className="text-lg text-gray-700 dark:text-black font-bold">
-                    Stock:{listProducts.stock}
+                    }).format(userResponse.billPerUser)}
                   </h1>
+                </div>
+                <div>
                   <h1 className="text-lg text-gray-700 dark:text-black font-bold">
-                    Discount:{listProducts.discPercent}%
-                  </h1>
-
-                  <h1 className="text-lg text-gray-700 dark:text-black font-bold">
-                    Disc Quantity:{listProducts.discQty}
+                    role: {userResponse.role}
                   </h1>
                 </div>
 
@@ -72,4 +63,4 @@ const DetailPage = ({ listProducts }) => {
   );
 };
 
-export default DetailPage;
+export default UserDetail;

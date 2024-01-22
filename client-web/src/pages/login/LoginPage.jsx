@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "../../assets/logoFix.svg";
 import "./LoginPage.scss"; // Import sass
 import { useState } from "react";
 import axios from "axios";

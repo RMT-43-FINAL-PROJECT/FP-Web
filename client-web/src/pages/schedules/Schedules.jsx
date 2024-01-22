@@ -17,7 +17,7 @@ const Schedules = () => {
         url: import.meta.env.VITE_BASE_URL + "/schedules",
         headers: {
           "ngrok-skip-browser-warning": "69420",
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWE3ZDVkZWU5MzVjZjc3MzAwODg2OGEiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwNTkwMzk0N30.w37kI8OsYUzGOxCq776J8LEZeJrGMDIbr-5StCz0VC0"
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
       });
 
@@ -89,7 +89,6 @@ const Schedules = () => {
         <Table slug="schedules" columns={columns} rows={filteredSchedules} />
       )}
 
-      {/* Add your modal or form component here */}
       {/* {open && <Add slug="product" columns={columns} setOpen={setOpen} />} */}
     </div>
   );
