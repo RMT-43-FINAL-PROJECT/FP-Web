@@ -74,20 +74,20 @@ const Products = () => {
         }))
       : [];
 
-  const filteredListProducts =
-    listProducts &&
-    listProducts.map((product, index) =>
-      displayedKeys.reduce((obj, key) => {
-        if (key === "id") {
-          obj[key] = index + 1;
-        } else if (key === "isAvailable") {
-          obj[key] = product[key] ? "In Stock" : "Out of Stock";
-        } else {
-          obj[key] = product[key];
-        }
-        return obj;
-      }, {})
-    );
+  // const filteredListProducts =
+  //   listProducts &&
+  //   listProducts.map((product, index) =>
+  //     displayedKeys.reduce((obj, key) => {
+  //       if (key === "id") {
+  //         obj[key] = index + 1;
+  //       } else if (key === "isAvailable") {
+  //         obj[key] = product[key] ? "In Stock" : "Out of Stock";
+  //       } else {
+  //         obj[key] = product[key];
+  //       }
+  //       return obj;
+  //     }, {})
+  //   );
 
   return (
     <div className="products">
@@ -98,7 +98,7 @@ const Products = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <Table slug="products" columns={columns} rows={filteredListProducts} />
+        <Table slug="products" columns={columns} rows={listProducts} />
       )}
 
       {/* Add your modal or form component here */}

@@ -15,27 +15,15 @@ const Orders = () => {
 
   const fetchOrders = async () => {
     try {
-      const { data } = await axios.get("http://localhost:3000/orders");
+      const { data } = await axios({
+        method: "GET",
+        url: import.meta.env.VITE_BASE_URL + "/orders",
+        headers: {
+          "ngrok-skip-browser-warning": "69420",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWE3ZDVkZWU5MzVjZjc3MzAwODg2OGEiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwNTkwMzk0N30.w37kI8OsYUzGOxCq776J8LEZeJrGMDIbr-5StCz0VC0"
+        },
+      });
       console.log("Data API:", data);
-
-      const storeResponse = await axios.get("http://localhost:3000/stores");
-      const userResponse = await axios.get("http://localhost:3000/users");
-
-      const stores = storeResponse.data.reduce((acc, store) => {
-        acc[store._id] = store.name;
-        return acc;
-      }, {});
-
-      const users = userResponse.data.reduce((acc, user) => {
-        acc[user._id] = user.name;
-        return acc;
-      }, {});
-
-      console.log(stores);
-      console.log(users);
-
-      setStoreData(stores);
-      setUserData(users);
 
       setTimeout(() => {
         setListOrders(data);

@@ -14,7 +14,7 @@ const Users = () => {
     try {
       const { data } = await axios({
         method: "GET",
-        url: "http://localhost:3000/users",
+        url: "https://f162-2001-448a-10b0-3db1-5032-3503-3f18-bfb6.ngrok-free.app/users"
       });
       console.log("Data API:", data);
       // data pada apinya nested
