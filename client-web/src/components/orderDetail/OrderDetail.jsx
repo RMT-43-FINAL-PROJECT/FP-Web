@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import UpdateOrder from "../updateOrder/UpdateOrder";
 
 const OrderDetail = ({ listOrders }) => {
   const storeName = listOrders?.store?.name;
   // const storeAddress = listSchedule?.storeInformations?.address;
   const salesName = listOrders?.user?.name;
   const productOrder = listOrders?.productOrder?.name;
+  const [open, setOpen] = useState(false);
 
   const formattedTime = new Date(listOrders?.createdAt).toLocaleString(
     "en-US",
@@ -34,7 +36,7 @@ const OrderDetail = ({ listOrders }) => {
 
               <div className="lg:w-1/2 lg:ml-6">
                 <p className="text-lg text-black uppercase underline font-bold">
-                  Order Detail
+                  Order Detail {listOrders._id}
                 </p>
 
                 <a
@@ -42,6 +44,13 @@ const OrderDetail = ({ listOrders }) => {
                   className="block mt-4 text-3xl font-semibold text-gray-800 hover:underline dark:text-black md:text-4xl"
                 >
                   {storeName}
+                </a>
+                <button onClick={() => setOpen(true)}>Edit Status</button>
+                <a
+                  href="#"
+                  className="block mt-4 text-3xl font-semibold text-gray-800 hover:underline dark:text-black md:text-4xl"
+                >
+                  Status Order : {listOrders.status}
                 </a>
                 <br />
                 <div className="card-description mt-3 rounded-md">
@@ -87,7 +96,7 @@ const OrderDetail = ({ listOrders }) => {
                   </h1>
                 </div>
                 <div>
-                  <h1 className="text-lg text-gray-700 dark:text-black font-bold"></h1>
+                {open && <UpdateOrder slug="product" setOpen={setOpen} listOrders={listOrders} />}
                 </div>
                 <div>
                   <h1 className="text-lg text-gray-700 dark:text-black font-bold">
