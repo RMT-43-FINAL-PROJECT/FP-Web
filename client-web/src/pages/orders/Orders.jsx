@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import React from "react";
 import Table from "../../components/table/Table";
 import axios from "axios";
@@ -10,9 +12,21 @@ const Orders = () => {
   const [open, setOpen] = useState(false);
   const [listOrders, setListOrders] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
+  const handleDeleteOrder = async () => {
+    await fetchData();
+  };
 
-  const fetchOrders = async () => {
+  const handleError = (errorMessage) => {
+    setError(errorMessage);
+    toast.error(errorMessage, {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 1000,
+    });
+  };
+
+  const fetchData = async () => {
     try {
       const { data } = await axios({
         method: "GET",
@@ -30,11 +44,12 @@ const Orders = () => {
       }, 300);
     } catch (error) {
       console.log(error.message);
+      setError("Failed to fetch data.");
     }
   };
 
   useEffect(() => {
-    fetchOrders();
+    fetchData();
   }, []);
 
   const displayedKeys = [
@@ -49,7 +64,9 @@ const Orders = () => {
   const columns = displayedKeys.map((key) => ({
     field: key,
     headerName:
-      key === "storeName"
+      key === "_id"  
+        ? "Order ID"   
+        : key === "storeName"
         ? "Store Name"
         : key === "userName"
         ? "User Name"
@@ -58,7 +75,7 @@ const Orders = () => {
         : key === "status"
         ? "Status"
         : key.charAt(0).toUpperCase() + key.slice(1),
-    width: 220,
+    width: 250,
   }));
 
   const filteredListOrders =
@@ -91,7 +108,14 @@ const Orders = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <Table slug="orders" columns={columns} rows={filteredListOrders} />
+        <Table
+          slug="orders"
+          columns={columns}
+          rows={filteredListOrders}
+          deleteUrl={`${import.meta.env.VITE_BASE_URL}/orders`}
+          onDelete={handleDeleteOrder}
+          onError={handleError}
+        />
       )}
       {/* {open && <Add slug="product" columns={columns} setOpen={setOpen} />} */}
     </div>
