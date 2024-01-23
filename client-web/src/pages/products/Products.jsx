@@ -78,7 +78,7 @@ const Products = () => {
             key === "isAvailable"
               ? "Status"
               : key.charAt(0).toUpperCase() + key.slice(1),
-          width: key === "image" ? 170 : 150,
+          width: key === "image" ? 100 : 150,
           renderCell: (params) => {
             return key === "price" ? (
               formatPriceToRupiah(params.value)

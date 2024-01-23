@@ -60,8 +60,8 @@ const AddStore = (props) => {
 
       console.log(response.data);
       toast.success("Store added successfully!");
-      setOpen(false);
       navigate("/stores");
+      setOpen(false);
     } catch (error) {
       console.log(error);
       toast.error("Error adding store. Please check the form.");
