@@ -18,6 +18,13 @@ const AddProduct = (props) => {
     isAvailable: true,
   });
   const [image, setImage] = useState(null);
+  const [categories, setCategories] = useState([
+    "Beauty & Wellbeing",
+    "Personal Care",
+    "Home Care",
+    "Nutrition",
+    "Ice Cream",
+  ]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -80,12 +87,21 @@ const AddProduct = (props) => {
           </div>
           <div className="item">
             <label>Category</label>
-            <input
+            <select
               name="category"
-              type="text"
               id="category"
               onChange={handleChange}
-            />
+              value={input.category}
+            >
+              <option value="" disabled>
+                Select a category
+              </option>
+              {categories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="item">
             <label>Stock</label>

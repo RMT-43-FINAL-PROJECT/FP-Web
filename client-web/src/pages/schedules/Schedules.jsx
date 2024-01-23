@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import Spinner from "../../components/spinner/Spinner";
 import { useState } from "react";
+import AddSchedule from "../addSchedule/AddSchedule";
 
 const Schedules = () => {
   const [open, setOpen] = useState(false);
@@ -67,13 +68,14 @@ const Schedules = () => {
       const userName = userInformations?.name || "Unknown User";
       const address = storeInformations?.address || "Unknown Address";
       const status = isCompleted ? "Completed" : "Not Completed";
-
+      const formattedDate = new Date(time).toLocaleDateString();
+      const formattedTime = new Date(time).toLocaleTimeString();
       return {
         _id,
         storeName,
         userName,
         address,
-        time,
+        time: `${formattedDate} ${formattedTime}`,
         status,
       };
     });
@@ -92,7 +94,7 @@ const Schedules = () => {
         <Table slug="schedules" columns={columns} rows={filteredSchedules} />
       )}
 
-      {/* {open && <Add slug="product" columns={columns} setOpen={setOpen} />} */}
+      {open && <AddSchedule slug="product" columns={columns} setOpen={setOpen} />}
     </div>
   );
 };
