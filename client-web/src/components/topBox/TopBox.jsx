@@ -1,26 +1,46 @@
-import "./topBox.scss"
-import {topSales} from "../../data.js"
+import "./topBox.scss";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const TopBox = () => {
+  const [topSales, setTopSales] = useState([]);
+
+  async function fetchData() {
+    const { data } = await axios({
+      method: "GET",
+      url: import.meta.env.VITE_BASE_URL + "/users/dashboard",
+      headers: {
+        "ngrok-skip-browser-warning": "69420",
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      },
+    });
+    setTopSales(data.data);
+  }
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div className="topBox">
       <h1>Top Sales</h1>
       <div className="list">
-        {topSales.map(user=>(
-          <div className="listItem" key={user.id}>
-            <div className="user">
-              <img src={user.img} alt="" />
-              <div className="userTexts">
-                <span className="username">{user.username}</span>
-                <span className="email">{user.email}</span>
+        {topSales &&
+          topSales.map((user) => (
+            <div className="listItem" key={user._id}>
+              <div className="user">
+                <img src={user.photo} alt="" />
+                <div className="userTexts">
+                  <span className="username">{user.name}</span>
+                  {/* <span className="email">{user.email}</span> */}
+                  {/* <span className="joinDate">{user.joinDate}</span> */}
+                </div>
               </div>
+              <span className="amount">Rp.{user.billPerUser}</span>
             </div>
-            <span className="amount">Rp.{user.amount}</span>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TopBox
+export default TopBox;
