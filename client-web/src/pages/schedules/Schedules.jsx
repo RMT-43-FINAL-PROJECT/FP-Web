@@ -51,10 +51,10 @@ const Schedules = () => {
       key === "storeName"
         ? "Store Name"
         : key === "userName"
-        ? "User Name"
-        : key === "address"
-        ? "address"
-        : key.charAt(0).toUpperCase() + key.slice(1),
+          ? "User Name"
+          : key === "address"
+            ? "address"
+            : key.charAt(0).toUpperCase() + key.slice(1),
     width: key === "status" ? 200 : 220,
   }));
 
@@ -68,18 +68,27 @@ const Schedules = () => {
       const userName = userInformations?.name || "Unknown User";
       const address = storeInformations?.address || "Unknown Address";
       const status = isCompleted ? "Completed" : "Not Completed";
-      const formattedDate = new Date(time).toLocaleDateString();
-      const formattedTime = new Date(time).toLocaleTimeString();
+      const event = new Date(time);
+      const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        timeZoneName: 'short',
+      };
+      const formattedTime = event.toLocaleDateString('id-ID', options)
       return {
         _id,
         storeName,
         userName,
         address,
-        time: `${formattedDate} ${formattedTime}`,
+        time: formattedTime,
         status,
       };
     });
-    console.log("response",filteredSchedules);
+  // console.log("response",filteredSchedules);
 
 
   return (

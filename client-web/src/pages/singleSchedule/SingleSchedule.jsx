@@ -9,7 +9,6 @@ const SingleSchedule = () => {
   
     const fetchData = async () => {
         try {
-          console.log(scheduleId);
           const { data } = await axios.get(
             `${import.meta.env.VITE_BASE_URL}/schedules/${scheduleId}`,
             {
@@ -19,7 +18,7 @@ const SingleSchedule = () => {
               },
             }
           );
-        console.log("Data API:", data);
+        // console.log("Data API:", data);
         // data pada apinya nested
     
         setListSchedule(data);
