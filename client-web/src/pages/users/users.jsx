@@ -49,7 +49,7 @@ const Users = () => {
             key === "joinDate"
               ? "Join Date"
               : key.charAt(0).toUpperCase() + key.slice(1),
-          width: key === "photo" ? 170 : 300,
+          width: key === "photo" ? 170 : 250,
           renderCell: (params) => {
             return key === "photo" ? (
               <img

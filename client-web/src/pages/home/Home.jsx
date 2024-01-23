@@ -1,19 +1,9 @@
 import { useEffect, useState } from "react";
 import TopOrder from "../../components/TopOrder/TopOrder";
-import BarChartBox from "../../components/barChartBox/BarChartBox";
-import BigChartBox from "../../components/bigChartBox/BigChartBox";
 import ChartBox from "../../components/chartBox/ChartBox";
 import PieChartBox from "../../components/pieCartBox/PieChartBox";
 import TopBox from "../../components/topBox/TopBox";
 import TopStore from "../../components/topStore/TopStore";
-import {
-  barChartBoxRevenue,
-  barChartBoxVisit,
-  chartBoxOrders,
-  chartBoxProduct,
-  chartBoxRevenue,
-  chartBoxStores,
-} from "../../data";
 import "./home.scss";
 import axios from "axios";
 import { toRupiah } from "../../helpers/rupiahFormarter";

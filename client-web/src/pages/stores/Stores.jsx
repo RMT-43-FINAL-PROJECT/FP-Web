@@ -67,7 +67,7 @@ const Stores = () => {
       ? displayedKeys.map((key) => ({
           field: key,
           headerName: key.charAt(0).toUpperCase() + key.slice(1),
-          width: key === "photo" ? 170 : 250,
+          width: key === "photo" ? 170 : 260,
           renderCell: (params) => {
             return key === "photo" ? (
               <img
