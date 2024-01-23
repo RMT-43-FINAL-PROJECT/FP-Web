@@ -1,26 +1,46 @@
-import { topOrder } from "../../data"
-import "./topOrder.scss"
+import { useEffect, useState } from "react";
+import "./topOrder.scss";
+import axios from "axios";
 
 const TopOrder = () => {
+  const [topOrder, setTopOrder] = useState([]);
+
+  async function fetchData() {
+    const { data } = await axios({
+      method: "GET",
+      url: import.meta.env.VITE_BASE_URL + "/products/dashboard",
+      headers: {
+        "ngrok-skip-browser-warning": "69420",
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      },
+    });
+    setTopOrder(data);
+  }
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div className="topBox">
       <h1>Top Orders</h1>
       <div className="list">
-        {topOrder.map(order=>(
-          <div className="listItem" key={order.id}>
+        {topOrder.map((order) => (
+          <div className="listItem" key={order._id}>
             <div className="order">
-              <img src={order.img} alt="" />
+              <img src={order.image} alt="" />
               <div className="orderText">
                 <span className="name">{order.name}</span>
-                <span className="soldOut">{order.soldOut}</span>
+                <span className="soldQty">{order.confirmedOrderQty}</span>
               </div>
             </div>
-            <span className="price">Rp.{order.price}</span>
+            <span className="confirmedOrderValue">
+              Rp.{order.confirmedOrderValue}
+            </span>
           </div>
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TopOrder
+export default TopOrder;
