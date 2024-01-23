@@ -10,7 +10,6 @@ const SingleOrder = () => {
 
   const fetchData = async () => {
     try {
-      console.log(id);
       const { data } = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/orders/${id}`,
         {
@@ -20,9 +19,6 @@ const SingleOrder = () => {
           },
         }
       );
-      console.log("Data API:", data);
-      // data pada apinya nested
-
       setListOrders(data);
     } catch (error) {
       console.log(error.message);
