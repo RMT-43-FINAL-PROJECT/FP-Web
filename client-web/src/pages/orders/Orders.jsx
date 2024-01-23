@@ -75,7 +75,7 @@ const Orders = () => {
         : key === "status"
         ? "Status"
         : key.charAt(0).toUpperCase() + key.slice(1),
-    width: 250,
+    width: 200,
   }));
 
   const filteredListOrders =

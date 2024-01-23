@@ -28,7 +28,7 @@ const AddSchedule = (props) => {
             Authorization: "Bearer " + localStorage.getItem("access_token"),
           },
         });
-        console.log("data stores", data);
+        // console.log("data stores", data);
         setStores(data);
       } catch (error) {
         console.error("Error fetching stores:", error);
@@ -49,7 +49,7 @@ const AddSchedule = (props) => {
             Authorization: "Bearer " + localStorage.getItem("access_token"),
           },
         });
-        console.log("data user", data);
+        // console.log("data user", data);
         setUsers(data);
       } catch (error) {
         console.error("Error fetching users:", error);
@@ -70,7 +70,7 @@ const AddSchedule = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await axios({
+      const response = await axios({
         method: "post",
         url: import.meta.env.VITE_BASE_URL + "/schedules",
         data: scheduleInput,
@@ -79,10 +79,15 @@ const AddSchedule = (props) => {
         },
       });
 
-      console.log(data);
-      toast.success("Schedule added successfully!");
-      navigate("/schedules");
-      setOpen(false);
+      // console.log("data api",data);
+    
+      if (response.status === 201) {
+        toast.success("Schedule added successfully!");
+        props.setOpen(false);
+        window.location.reload();
+      } else {
+        toast.error("Failed to add schedule");
+      }
     } catch (error) {
       console.log(error);
       toast.error("Error adding schedule. Please check the form.");
