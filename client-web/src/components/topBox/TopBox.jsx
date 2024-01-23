@@ -1,6 +1,7 @@
 import "./topBox.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { toRupiah } from "../../helpers/rupiahFormarter";
 
 const TopBox = () => {
   const [topSales, setTopSales] = useState([]);
@@ -35,7 +36,7 @@ const TopBox = () => {
                   {/* <span className="joinDate">{user.joinDate}</span> */}
                 </div>
               </div>
-              <span className="amount">Rp.{user.billPerUser}</span>
+              <span className="amount">{toRupiah(user.billPerUser)}</span>
             </div>
           ))}
       </div>

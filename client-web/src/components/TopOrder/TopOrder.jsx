@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./topOrder.scss";
 import axios from "axios";
+import { toRupiah } from "../../helpers/rupiahFormarter";
 
 const TopOrder = () => {
   const [topOrder, setTopOrder] = useState([]);
@@ -34,7 +35,7 @@ const TopOrder = () => {
               </div>
             </div>
             <span className="confirmedOrderValue">
-              Rp.{order.confirmedOrderValue}
+              {toRupiah(order.confirmedOrderValue)}
             </span>
           </div>
         ))}

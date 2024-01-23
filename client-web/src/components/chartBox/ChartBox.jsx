@@ -28,7 +28,7 @@ const ChartBox = (props) => {
         </Link>
       </div>
       <div className="chartInfo">
-        <div className="chart">
+        {/* <div className="chart">
           <ResponsiveContainer width="99%" height="100%">
             <LineChart data={props.chartData}>
               <Tooltip
@@ -45,7 +45,7 @@ const ChartBox = (props) => {
               />
             </LineChart>
           </ResponsiveContainer>
-        </div>
+        </div> */}
         <div className="texts">
           <span className="duration">this month</span>
         </div>
