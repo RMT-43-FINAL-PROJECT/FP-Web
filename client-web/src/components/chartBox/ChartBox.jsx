@@ -24,7 +24,7 @@ const ChartBox = (props) => {
         </div>
         <h1>{props.number}</h1>
         <Link to="/" style={{ color: props.color }}>
-          View all
+          This Month
         </Link>
       </div>
       <div className="chartInfo">
@@ -46,9 +46,7 @@ const ChartBox = (props) => {
             </LineChart>
           </ResponsiveContainer>
         </div> */}
-        <div className="texts">
-          <span className="duration">this month</span>
-        </div>
+  
       </div>
     </div>
   );
