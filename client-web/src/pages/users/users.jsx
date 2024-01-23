@@ -45,7 +45,10 @@ const Users = () => {
     listUsers && listUsers.length > 0
       ? displayedKeys.map((key) => ({
           field: key,
-          headerName: key.charAt(0).toUpperCase() + key.slice(1),
+          headerName:
+            key === "joinDate"
+              ? "Join Date"
+              : key.charAt(0).toUpperCase() + key.slice(1),
           width: key === "photo" ? 170 : 300,
           renderCell: (params) => {
             return key === "photo" ? (
@@ -54,6 +57,8 @@ const Users = () => {
                 alt={`User ${params.row.name}`}
                 style={{ maxWidth: "100%", maxHeight: "100%" }}
               />
+            ) : key === "joinDate" ? (
+              new Date(params.value).toLocaleDateString()
             ) : (
               params.value
             );

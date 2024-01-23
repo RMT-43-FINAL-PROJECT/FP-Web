@@ -1,10 +1,10 @@
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import React from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import "./table.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const Table = (props) => {
   const handleDelete = async (_id) => {
@@ -17,17 +17,20 @@ const Table = (props) => {
           Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
       });
-      toast.success("Product deleted successfully!");
+      toast.success("deleted successfully!");
       if (props.onDelete) {
         props.onDelete();
       }
     } catch (error) {
-      console.log(error.message);
-      toast.error('Failed to delete the product.');
+      // console.log(error.message);
+      toast.error(error.response.data.message);
       if (error.response) {
         console.log("Server res data:", error.response.data);
         console.log("Server res satus:", error.response.status);
         console.log("Server res headers:", error.response.headers);
+      }
+      if (props.onError) {
+        props.onError(error.response.data.message);
       }
     }
   };
