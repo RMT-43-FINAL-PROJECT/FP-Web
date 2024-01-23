@@ -30,22 +30,22 @@ const Home = () => {
       <div className="box box4">
         <PieChartBox />
       </div>
-            {/* chart store */}
+      {/* chart store */}
       <div className="box box2">
         <ChartBox {...chartBoxStores} />
       </div>
-                  {/* chart product */}
+      {/* chart product */}
       <div className="box box3">
         <ChartBox {...chartBoxProduct} />
       </div>
-            {/* chart order */}
+      {/* chart order */}
       <div className="box box5">
         <ChartBox {...chartBoxOrders} />
       </div>
       <div className="box box6">
         <ChartBox {...chartBoxRevenue} />
       </div>
-      
+
       <div className="box7"></div>
     </div>
   );

@@ -25,7 +25,7 @@ const TopBox = () => {
       <h1>Top Sales</h1>
       <div className="list">
         {topSales &&
-          topSales.map((user) => (
+          topSales.slice(0, 7).map((user) => (
             <div className="listItem" key={user._id}>
               <div className="user">
                 <img src={user.photo} alt="" />

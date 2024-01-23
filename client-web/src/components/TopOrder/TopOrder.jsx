@@ -24,13 +24,13 @@ const TopOrder = () => {
     <div className="topBox">
       <h1>Top Orders</h1>
       <div className="list">
-        {topOrder.map((order) => (
+        {topOrder.slice(0, 7).map((order) => (
           <div className="listItem" key={order._id}>
             <div className="order">
               <img src={order.image} alt="" />
               <div className="orderText">
                 <span className="name">{order.name}</span>
-                <span className="soldQty">{order.confirmedOrderQty}</span>
+                <span className="soldQty">{order.confirmedOrderQty} bill</span>
               </div>
             </div>
             <span className="confirmedOrderValue">
