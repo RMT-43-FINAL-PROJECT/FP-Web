@@ -1,14 +1,30 @@
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import Table from "../../components/table/Table";
 import Spinner from "../../components/spinner/Spinner";
+import AddStore from "../addStore/AddStore";
 
 const Stores = () => {
   const [open, setOpen] = useState(false);
   const [listStores, setListStores] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const handleDeleteStore = async () => {
+    await fetchData();
+  };
+
+  const handleError = (errorMessage) => {
+    setError(errorMessage);
+    toast.error(errorMessage, {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 1000,
+    });
+  };
 
   const fetchData = async () => {
     try {
@@ -88,9 +104,16 @@ const Stores = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <Table slug="stores" columns={columns} rows={listStores} />
+        <Table
+          slug="stores"
+          columns={columns}
+          rows={listStores}
+          deleteUrl={`${import.meta.env.VITE_BASE_URL}/stores`}
+          onDelete={handleDeleteStore}
+          onError={handleError}
+        />
       )}
-      {/* {open && <Add slug="product" columns={columns} setOpen={setOpen} />} */}
+      {open && <AddStore slug="stores" columns={columns} setOpen={setOpen} />}
     </div>
   );
 };
