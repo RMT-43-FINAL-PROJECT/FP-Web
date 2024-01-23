@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./topStore.scss";
 import axios from "axios";
+import { toRupiah } from "../../helpers/rupiahFormarter";
 
 const TopStore = () => {
   const [topStore, setTopStore] = useState([]);
@@ -33,7 +34,9 @@ const TopStore = () => {
                   {/* <span className="ownerName">{store.ownerName}</span> */}
                 </div>
               </div>
-              <span className="totalOrder">Rp.{store.confirmedOrderValue}</span>
+              <span className="totalOrder">
+                {toRupiah(store.confirmedOrderValue)}
+              </span>
             </div>
           ))}
       </div>
