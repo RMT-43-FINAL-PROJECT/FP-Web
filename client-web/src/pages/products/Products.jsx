@@ -20,6 +20,10 @@ const Products = () => {
   const [listProducts, setListProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const handleDeleteProduct = async () => {
+    await fetchData();
+  };
+
   const fetchData = async () => {
     try {
       const { data } = await axios({
@@ -40,8 +44,15 @@ const Products = () => {
       setLoading(false);
     } catch (error) {
       console.log(error.message);
+      if (error.response) {
+        console.log("Server Response Data:", error.response.data);
+        console.log("Server Response Status:", error.response.status);
+        console.log("Server Response Headers:", error.response.headers);
+      }
     }
   };
+
+  
 
   useEffect(() => {
     fetchData();
@@ -99,7 +110,13 @@ const Products = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <Table slug="products" columns={columns} rows={listProducts} />
+        <Table
+          slug="products"
+          columns={columns}
+          rows={listProducts}
+          deleteUrl={`${import.meta.env.VITE_BASE_URL}/products`}
+          onDelete={handleDeleteProduct}
+        />
       )}
 
       {open && <AddProduct slug="product" columns={columns} setOpen={setOpen} />}

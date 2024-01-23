@@ -2,11 +2,34 @@ import React from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import "./table.scss";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Table = (props) => {
-  const handleDelete = (id) => {
-    // Delete the item
-    // mutation.mutate(id)
+  const handleDelete = async (_id) => {
+    try {
+      await axios({
+        method: "delete",
+        url: `${props.deleteUrl}/${String(_id)}`,
+        headers: {
+          "ngrok-skip-browser-warning": "69420",
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
+        },
+      });
+      toast.success("Product deleted successfully!");
+      if (props.onDelete) {
+        props.onDelete();
+      }
+    } catch (error) {
+      console.log(error.message);
+      toast.error('Failed to delete the product.');
+      if (error.response) {
+        console.log("Server res data:", error.response.data);
+        console.log("Server res satus:", error.response.status);
+        console.log("Server res headers:", error.response.headers);
+      }
+    }
   };
 
   const actionColumn = {
@@ -19,7 +42,7 @@ const Table = (props) => {
           <Link to={`/${props.slug}/${params.row._id}`}>
             <img src="/view.svg" alt="" />
           </Link>
-          <div className="delete" onClick={() => handleDelete(params.row.id)}>
+          <div className="delete" onClick={() => handleDelete(params.row._id)}>
             <img src="/delete.svg" alt="" />
           </div>
         </div>
