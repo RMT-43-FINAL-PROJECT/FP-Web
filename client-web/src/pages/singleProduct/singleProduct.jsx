@@ -23,7 +23,7 @@ const SingleProduct = () => {
           Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
       });
-      console.log("Data API:", data);
+      // console.log("Data API:", data);
       // data pada apinya nested
       setListProducts(data);
     } catch (error) {
