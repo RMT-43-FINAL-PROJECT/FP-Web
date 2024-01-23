@@ -4,25 +4,27 @@ import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import "./addProduct.scss";
+import "./addStore.scss";
 
-const AddProduct = (props) => {
+const AddStore = (props) => {
   const navigate = useNavigate();
-  const [input, setInput] = useState({
+  const [open, setOpen] = useState(false);
+  const [storeInput, setStoreInput] = useState({
     name: "",
-    category: "",
-    stock: 0,
-    price: 0,
-    discQty: 10,
-    discPercent: 5,
-    isAvailable: true,
+    longitude: 112.63070356923028,
+    latitude: -7.986860420618447,
+    address: "",
+    joinDate: new Date(),
+    ownerName: "",
+    mobilePhone: "",
+    status: "unverified",
   });
   const [image, setImage] = useState(null);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setInput({
-      ...input,
+    setStoreInput({
+      ...storeInput,
       [name]: value,
     });
   };
@@ -36,18 +38,19 @@ const AddProduct = (props) => {
     event.preventDefault();
     try {
       const formData = new FormData();
-      formData.append("image", image);
-      formData.append("name", input.name);
-      formData.append("category", input.category);
-      formData.append("stock", input.stock);
-      formData.append("price", input.price);
-      formData.append("discQty", input.discQty);
-      formData.append("discPercent", input.discPercent);
-      formData.append("isAvailable", input.isAvailable);
+      formData.append("photo", image);
+      formData.append("name", storeInput.name);
+      formData.append("longitude", storeInput.longitude);
+      formData.append("latitude", storeInput.latitude);
+      formData.append("address", storeInput.address);
+      formData.append("joinDate", storeInput.joinDate);
+      formData.append("ownerName", storeInput.ownerName);
+      formData.append("mobilePhone", storeInput.mobilePhone);
+      formData.append("status", storeInput.status);
 
-      const { data } = await axios({
+      const response = await axios({
         method: "post",
-        url: import.meta.env.VITE_BASE_URL + "/products",
+        url: import.meta.env.VITE_BASE_URL + "/stores",
         data: formData,
         headers: {
           "Content-Type": "multipart/form-data",
@@ -55,83 +58,90 @@ const AddProduct = (props) => {
         },
       });
 
-      console.log(data);
-      toast.success("Product added successfully!");
-      props.setOpen(false);
-      navigate("/products");
+      console.log(response.data);
+      toast.success("Store added successfully!");
+      setOpen(false);
+      navigate("/stores");
     } catch (error) {
       console.log(error);
-      toast.error("Error adding product. Please check the form.");
+      toast.error("Error adding store. Please check the form.");
     }
   };
 
-  console.log(input);
+  console.log(storeInput);
   return (
     <div className="add">
       <div className="modal">
         <span className="close" onClick={() => props.setOpen(false)}>
           X
         </span>
-        <h1>Add new Product</h1>
+        <h1>Add new Store</h1>
         <form onSubmit={handleSubmit}>
           <div className="item">
             <label>Name</label>
             <input name="name" type="text" id="name" onChange={handleChange} />
           </div>
           <div className="item">
-            <label>Category</label>
+            <label>Longitude</label>
             <input
-              name="category"
+              name="longitude"
+              type="number"
+              id="longitude"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="item">
+            <label>Latitude</label>
+            <input
+              name="latitude"
+              type="number"
+              id="latitude"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="item">
+            <label>Address</label>
+            <input
+              name="address"
               type="text"
-              id="category"
+              id="address"
               onChange={handleChange}
             />
           </div>
           <div className="item">
-            <label>Stock</label>
+            <label>Join Date</label>
             <input
-              name="stock"
-              type="number"
-              id="stock"
+              name="joinDate"
+              type="date"
+              id="joinDate"
               onChange={handleChange}
             />
           </div>
           <div className="item">
-            <label>Price</label>
+            <label>Owner Name</label>
             <input
-              name="price"
-              type="number"
-              id="price"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="item">
-            <label>DiscQty</label>
-            <input
-              name="discQty"
-              type="number"
-              id="discQty"
-              value={10}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="item">
-            <label>discPercent</label>
-            <input
-              name="discPercent"
-              type="number"
-              id="discPercent"
-              value={5}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="item">
-            <label>isAvailable</label>
-            <input
-              name="isAvailable"
+              name="ownerName"
               type="text"
-              id="isAvailable"
-              value={input.isAvailable}
+              id="ownerName"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="item">
+            <label>mobilePhone</label>
+            <input
+              name="mobilePhone"
+              type="text"
+              id="mobilePhone"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="item">
+            <label>status</label>
+            <input
+              name="status"
+              type="text"
+              id="status"
+              value={storeInput.status}
               onChange={handleChange}
             />
           </div>
@@ -147,4 +157,4 @@ const AddProduct = (props) => {
   );
 };
 
-export default AddProduct;
+export default AddStore;
