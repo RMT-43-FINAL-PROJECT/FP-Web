@@ -6,6 +6,7 @@ import Table from "../../components/table/Table";
 import axios from "axios";
 import { useEffect } from "react";
 import Spinner from "../../components/spinner/Spinner";
+import AddProduct from "../addProduct/AddProduct";
 
 export const formatPriceToRupiah = (price) => {
   return new Intl.NumberFormat("id-ID", {
@@ -101,7 +102,7 @@ const Products = () => {
         <Table slug="products" columns={columns} rows={listProducts} />
       )}
 
-      {/* {open && <Add slug="product" columns={columns} setOpen={setOpen} />} */}
+      {open && <AddProduct slug="product" columns={columns} setOpen={setOpen} />}
     </div>
   );
 };
