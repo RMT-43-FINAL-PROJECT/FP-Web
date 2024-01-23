@@ -1,5 +1,3 @@
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
@@ -196,7 +194,6 @@ const UpdateSchedule = (props) => {
                     </form>
                 )}
             </div>
-            <ToastContainer />
         </div>
     );
 };

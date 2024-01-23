@@ -1,12 +1,33 @@
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import React from "react";
+import React, { useState } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import "./table.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const Table = (props) => {
+  const [deleteItemId, setDeleteItemId] = useState(null);
+
+  const handleDeleteConfirmation = (itemId) => {
+    setDeleteItemId(itemId);
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this record!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        handleDelete(itemId);
+      } else {
+        setDeleteItemId(null);
+      }
+    });
+  };
+
   const handleDelete = async (_id) => {
     try {
       await axios({
@@ -17,17 +38,32 @@ const Table = (props) => {
           Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
       });
-      toast.success("deleted successfully!");
       if (props.onDelete) {
         props.onDelete();
       }
+      Swal.fire({
+        icon: "success",
+        title: "Deleted successfully!",
+      });
     } catch (error) {
-      // console.log(error.message);
-      toast.error(error.response.data.message);
       if (error.response) {
         console.log("Server res data:", error.response.data);
-        console.log("Server res satus:", error.response.status);
+        console.log("Server res status:", error.response.status);
         console.log("Server res headers:", error.response.headers);
+      }
+      if (
+        error.response.status === 400 &&
+        error.response.data.message === "Unable to delete confirmed Order"
+      ) {
+        Swal.fire({
+          icon: "error",
+          title: "Unable to delete confirmed Order",
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error during deletion",
+        });
       }
       if (props.onError) {
         props.onError(error.response.data.message);
@@ -45,7 +81,10 @@ const Table = (props) => {
           <Link to={`/${props.slug}/${params.row._id}`}>
             <img src="/view.svg" alt="" />
           </Link>
-          <div className="delete" onClick={() => handleDelete(params.row._id)}>
+          <div
+            className="delete"
+            onClick={() => handleDeleteConfirmation(params.row._id)}
+          >
             <img src="/delete.svg" alt="" />
           </div>
         </div>
@@ -75,7 +114,7 @@ const Table = (props) => {
             quickFilterProps: { debounceMs: 500 },
           },
         }}
-        pageSizeOptions={[5, 10, 25, 50]} 
+        pageSizeOptions={[5, 10, 25, 50]}
         checkboxSelection
         disableRowSelectionOnClick
         disableColumnFilter

@@ -11,6 +11,10 @@ const Users = () => {
   const [listUsers, setListUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const handleDeleteUser = async () => {
+    await fetchData();
+  };
+
   const fetchData = async () => {
     try {
       const { data } = await axios({
@@ -93,6 +97,8 @@ const Users = () => {
           entityRoute="finduser"
           columns={columns}
           rows={listUsers}
+          deleteUrl={`${import.meta.env.VITE_BASE_URL}/users`}
+          onDelete={handleDeleteUser}
         />
       )}
       {open && <AddUser slug="product" columns={columns} setOpen={setOpen} />}

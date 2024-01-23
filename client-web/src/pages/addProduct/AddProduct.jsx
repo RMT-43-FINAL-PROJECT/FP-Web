@@ -1,10 +1,9 @@
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./addProduct.scss";
+import Swal from "sweetalert2";
 
 const AddProduct = (props) => {
   const navigate = useNavigate();
@@ -26,6 +25,8 @@ const AddProduct = (props) => {
     "Ice Cream",
   ]);
 
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setInput({
@@ -41,6 +42,7 @@ const AddProduct = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
     try {
       const formData = new FormData();
       formData.append("image", image);
@@ -63,12 +65,25 @@ const AddProduct = (props) => {
       });
 
       console.log(data);
-      toast.success("Product added successfully!");
-      props.setOpen(false);
-      navigate("/products");
+      Swal.fire({
+        icon: 'success',
+        title: 'Product added successfully!',
+        timerProgressBar: true,
+
+        willClose: () => {
+          setLoading(false);
+          props.setOpen(false);
+          window.location.reload();
+          navigate("/products");
+        },
+      });
     } catch (error) {
-      console.log(error);
-      toast.error("Error adding product. Please check the form.");
+      console.error(error);
+      setLoading(false);
+      Swal.fire({
+        icon: "error",
+        title: "Error adding product. Please check the form.",
+      });
     }
   };
 
@@ -155,10 +170,11 @@ const AddProduct = (props) => {
             <label>Image</label>
             <input type="file" accept="image/*" onChange={handleImageChange} />
           </div>
-          <button type="submit">Send</button>
+          <button type="submit" disabled={loading}>
+            {loading ? "Loading..." : "Send"}
+          </button>
         </form>
       </div>
-      <ToastContainer />
     </div>
   );
 };
