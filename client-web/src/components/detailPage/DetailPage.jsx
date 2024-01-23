@@ -5,70 +5,61 @@ const DetailPage = ({ listProducts }) => {
     return listProducts.isAvailable ? "In Stock" : "Out of Stock";
   };
   return (
-    <div className="products">
-      <div className="">
-        <div className="info">
-          <div className="container px-6 py-10 mx-auto">
-            <div className="mt-8 lg:flex lg:items-center">
-              <img
-                className="w-full h-65 lg:w-1/2 lg:h-70 rounded-xl mb-6 lg:mb-0"
-                src={listProducts.image}
-                alt={listProducts.name}
-              />
-
-              <div className="lg:w-1/2 lg:ml-6">
-                <p className="text-lg text-black uppercase underline font-bold">
-                  Product Detail
+    <body>
+      <main>
+        <div class="card">
+          <div class="card__title">
+            <div class="icon">
+              <a href="#">
+                <i class="fa fa-arrow-left"></i>
+              </a>
+            </div>
+            <h3>Products Details</h3>
+          </div>
+          <div class="card__body">
+            <div class="half">
+              <div class="featured_text">
+                <h1>{listProducts.name}</h1>
+                <p class="sub">{listProducts.category}</p>
+                <p class="price">
+                  {" "}
+                  {new Intl.NumberFormat("id-ID", {
+                    style: "currency",
+                    currency: "IDR",
+                  }).format(listProducts.price)}
                 </p>
+              </div>
+              <div class="image">
+                <img src={listProducts.image} alt={listProducts.name} />
+              </div>
+              <span class="stock">
+                <span>{getStatus()}</span>
+              </span>
+            </div>
+            <div class="half">
+              <div class="description">
+                <p>
+                </p>
+              </div>
 
-                <a
-                  href="#"
-                  className="block mt-4 text-3xl font-semibold text-gray-800 hover:underline dark:text-black md:text-4xl"
-                >
-                  {listProducts.name}
-                </a>
-
-                <div className="card-description mt-3 rounded-md">
-                  <p className="text-lg text-gray-700 dark:text-black md:text-2xl underline">
-                    {listProducts.category}
-                  </p>
-                  <h1 className="text-lg text-gray-700 dark:text-black font-bold">
-                    {getStatus()}
-                  </h1>
-                </div>
-                <br />
-                <div>
-                  <p className="text-lg text-gray-700 dark:text-black font-bold">
-                    Price:
-                    {new Intl.NumberFormat("id-ID", {
-                      style: "currency",
-                      currency: "IDR",
-                    }).format(listProducts.price)}
-                  </p>
-                  <h1 className="text-lg text-gray-700 dark:text-black font-bold">
-                    Stock:{listProducts.stock}
-                  </h1>
-                  <h1 className="text-lg text-gray-700 dark:text-black font-bold">
-                    Discount:{listProducts.discPercent}%
-                  </h1>
-
-                  <h1 className="text-lg text-gray-700 dark:text-black font-bold">
-                    Disc Quantity:{listProducts.discQty}
-                  </h1>
-                </div>
-
-                <a
-                  href="#"
-                  className="inline-block mt-2 text-blue-500 underline hover:text-blue-400 text-lg"
-                >
-                  update
-                </a>
+              <div class="reviews">
+                <span></span>
               </div>
             </div>
           </div>
+          <div class="card__footer">
+            <div class="recommend">
+              <h3>Stock: {listProducts.stock}</h3>
+              <h3>Discount Quantity : {listProducts.discQty}</h3>
+              <p>Discound Percent : {listProducts.discPercent}%</p>
+            </div>
+            <div class="action">
+              <button type="button">Update</button>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </main>
+    </body>
   );
 };
 

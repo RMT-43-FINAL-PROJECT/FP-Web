@@ -60,6 +60,7 @@ const Table = (props) => {
         rows={props.rows}
         columns={[...props.columns, actionColumn]}
         getRowId={(row) => row._id}
+        pageSize={10}
         initialState={{
           pagination: {
             paginationModel: {
@@ -74,7 +75,7 @@ const Table = (props) => {
             quickFilterProps: { debounceMs: 500 },
           },
         }}
-        pageSizeOptions={[5]}
+        pageSizeOptions={[5, 10, 25, 50]} 
         checkboxSelection
         disableRowSelectionOnClick
         disableColumnFilter
