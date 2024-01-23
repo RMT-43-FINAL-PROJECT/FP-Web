@@ -31,7 +31,7 @@ const TopBox = () => {
                 <img src={user.photo} alt="" />
                 <div className="userTexts">
                   <span className="username">{user.name}</span>
-                  {/* <span className="email">{user.email}</span> */}
+                  {/* <span className="email">{user.email}</span> //emailnya g ada */}
                   {/* <span className="joinDate">{user.joinDate}</span> */}
                 </div>
               </div>
