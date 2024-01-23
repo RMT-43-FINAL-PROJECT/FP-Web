@@ -3,8 +3,7 @@ import "./addUser.scss";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
 
 const AddUser = (props) => {
   const navigate = useNavigate();
@@ -16,7 +15,7 @@ const AddUser = (props) => {
     address: "",
     role: "sales",
   });
-
+  const [loading, setLoading] = useState(false);
   const handleChange = (event) => {
     const { name, value } = event.target;
     setInput({
@@ -27,6 +26,7 @@ const AddUser = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
     try {
       const { data } = await axios({
         method: "post",
@@ -38,12 +38,26 @@ const AddUser = (props) => {
       });
 
       console.log(data);
-      toast.success("User added successfully!");
-      props.setOpen(false);
-      navigate("/users");
+      Swal.fire({
+        icon: "success",
+        title: "Product added successfully!",
+        timer: 1000,
+        timerProgressBar: true,
+
+        willClose: () => {
+          setLoading(false);
+          props.setOpen(false);
+          navigate("/users");
+          window.location.reload();
+        },
+      });
     } catch (error) {
-      console.log(error);
-      toast.error("Error adding user. Please check the form.");
+      console.error(error);
+      setLoading(false);
+      Swal.fire({
+        icon: "error",
+        title: "Error adding product. Please check the form.",
+      });
     }
   };
   console.log(input);
@@ -95,10 +109,11 @@ const AddUser = (props) => {
               onChange={handleChange}
             />
           </div>
-          <button type="submit">Send</button>
+          <button type="submit" disabled={loading}>
+            {loading ? "Loading..." : "Send"}
+          </button>
         </form>
       </div>
-      <ToastContainer />
     </div>
   );
 };

@@ -1,13 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import "./userTable.scss";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 const UserTable = (props) => {
   const { baseRoute, entityRoute } = props;
-  const handleDelete = (id) => {
-    // Delete the item
-    // mutation.mutate(id)
+  const [deleteItemId, setDeleteItemId] = useState(null);
+  
+  const handleDeleteConfirmation = (itemId) => {
+    setDeleteItemId(itemId);
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this record!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        handleDelete(itemId);
+      } else {
+        setDeleteItemId(null);
+      }
+    });
+  };
+
+
+  const handleDelete = async (_id) => {
+    try {
+      console.log("Deleting user with ID:", _id);
+  
+      const response = await axios({
+        method: "delete",
+        url: `${props.deleteUrl}/${_id}`,
+        headers: {
+          "ngrok-skip-browser-warning": "69420",
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
+        },
+      });
+  
+      console.log("Delete response:", response);
+  
+      if (response.status === 200) {
+        if (props.onDelete) {
+          props.onDelete();
+        }
+        Swal.fire({
+          icon: "success",
+          title: "Deleted successfully!",
+        });
+      } else {
+        console.error("Delete request failed with status:", response.status);
+      }
+  
+    } catch (error) {
+      console.error("Error deleting user:", error);
+  
+      if (error.response) {
+        console.log("Server res data:", error.response.data);
+        console.log("Server res status:", error.response.status);
+        console.log("Server res headers:", error.response.headers);
+      }
+  
+      if (props.onError) {
+        props.onError(error.response ? error.response.data.message : error.message);
+      }
+    }
   };
 
   const actionColumns = {
@@ -20,7 +82,7 @@ const UserTable = (props) => {
           <Link to={`/${baseRoute}/${entityRoute}/${params.row._id}`}>
             <img src="/view.svg" alt="" />
           </Link>
-          <div className="delete" onClick={() => handleDelete(params.row.id)}>
+          <div className="delete" onClick={() => handleDeleteConfirmation(params.row._id)}>
             <img src="/delete.svg" alt="" />
           </div>
         </div>
