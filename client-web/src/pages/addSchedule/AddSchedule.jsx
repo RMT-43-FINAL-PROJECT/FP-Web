@@ -28,7 +28,6 @@ const AddSchedule = (props) => {
             Authorization: "Bearer " + localStorage.getItem("access_token"),
           },
         });
-        // console.log("data stores", data);
         setStores(data);
       } catch (error) {
         console.error("Error fetching stores:", error);
@@ -49,7 +48,6 @@ const AddSchedule = (props) => {
             Authorization: "Bearer " + localStorage.getItem("access_token"),
           },
         });
-        // console.log("data user", data);
         setUsers(data);
       } catch (error) {
         console.error("Error fetching users:", error);
@@ -79,8 +77,7 @@ const AddSchedule = (props) => {
         },
       });
 
-      // console.log("data api",data);
-    
+
       if (response.status === 201) {
         toast.success("Schedule added successfully!");
         props.setOpen(false);
@@ -93,7 +90,6 @@ const AddSchedule = (props) => {
       toast.error("Error adding schedule. Please check the form.");
     }
   };
-  console.log(scheduleInput);
 
   return (
     <div className="add">

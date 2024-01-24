@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 // import "./singleStore.scss";
 import StoreDetail from "../../components/storeDetail/StoreDetail";
 
-
 const SingleStore = () => {
   const [listStore, setListStore] = useState([]);
 

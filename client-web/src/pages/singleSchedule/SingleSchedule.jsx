@@ -18,8 +18,6 @@ const SingleSchedule = () => {
           },
         }
       );
-      // console.log("Data API:", data);
-      // data pada apinya nested
 
       setListSchedule(data);
     } catch (error) {

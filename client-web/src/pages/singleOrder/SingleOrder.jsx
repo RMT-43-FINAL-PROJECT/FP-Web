@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import OrderDetail from '../../components/orderDetail/OrderDetail';
+import OrderDetail from "../../components/orderDetail/OrderDetail";
 
 const SingleOrder = () => {
   const [listOrders, setListOrders] = useState([]);
@@ -32,7 +32,7 @@ const SingleOrder = () => {
     <div className="">
       <OrderDetail listOrders={listOrders} />
     </div>
-  )
+  );
 };
 
 export default SingleOrder;

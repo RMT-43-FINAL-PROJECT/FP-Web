@@ -36,7 +36,7 @@ const Orders = () => {
           Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
       });
-      console.log("Data API:", data);
+      // console.log("Data API:", data);
 
       setTimeout(() => {
         setListOrders(data);
@@ -64,8 +64,8 @@ const Orders = () => {
   const columns = displayedKeys.map((key) => ({
     field: key,
     headerName:
-      key === "_id"  
-        ? "Order ID"   
+      key === "_id"
+        ? "Order ID"
         : key === "storeName"
         ? "Store Name"
         : key === "userName"
@@ -79,26 +79,26 @@ const Orders = () => {
   }));
 
   const filteredListOrders =
-  listOrders &&
-  listOrders.map((order, index) => {
-    const { _id, status, createdAt, store, user, totalBill } = order;
+    listOrders &&
+    listOrders.map((order, index) => {
+      const { _id, status, createdAt, store, user, totalBill } = order;
 
-    const { _id: storeId, name: storeName } = store || {};
+      const { _id: storeId, name: storeName } = store || {};
 
-    const { _id: userId, name: userName } = user || {};
+      const { _id: userId, name: userName } = user || {};
 
-    const statusText = status === "confirmed" ? "Confirmed" : "Pending";
+      const statusText = status === "confirmed" ? "Confirmed" : "Pending";
 
-    return {
-      _id,
-      storeName: storeName || "Unknown Store",
-      userId,
-      userName: userName || "Unknown User",
-      status: statusText,
-      totalBill: formatPriceToRupiah(totalBill),
-      createdAt,
-    };
-  });
+      return {
+        _id,
+        storeName: storeName || "Unknown Store",
+        userId,
+        userName: userName || "Unknown User",
+        status: statusText,
+        totalBill: formatPriceToRupiah(totalBill),
+        createdAt,
+      };
+    });
 
   return (
     <div className="products">

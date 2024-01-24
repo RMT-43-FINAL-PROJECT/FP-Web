@@ -37,7 +37,7 @@ const AddUser = (props) => {
         },
       });
 
-      console.log(data);
+
       Swal.fire({
         icon: "success",
         title: "Product added successfully!",
@@ -60,7 +60,7 @@ const AddUser = (props) => {
       });
     }
   };
-  console.log(input);
+
   return (
     <div className="add">
       <div className="modal">

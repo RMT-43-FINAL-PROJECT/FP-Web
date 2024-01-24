@@ -34,7 +34,6 @@ const Products = () => {
           Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
       });
-      console.log("Data API:", data);
       const productsWithIds = data.map((product, index) => ({
         ...product,
         id: index + 1,
@@ -51,8 +50,6 @@ const Products = () => {
       }
     }
   };
-
-  
 
   useEffect(() => {
     fetchData();
@@ -105,7 +102,9 @@ const Products = () => {
     <div className="products">
       <div className="info">
         <h1>Products Management</h1>
-        <button onClick={() => setOpen(true)}>Add New Products</button>
+        <button className="logout-btn" onClick={() => setOpen(true)}>
+          Add New Products
+        </button>
       </div>
       {loading ? (
         <Spinner />
@@ -119,7 +118,9 @@ const Products = () => {
         />
       )}
 
-      {open && <AddProduct slug="product" columns={columns} setOpen={setOpen} />}
+      {open && (
+        <AddProduct slug="product" columns={columns} setOpen={setOpen} />
+      )}
     </div>
   );
 };

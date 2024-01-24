@@ -11,7 +11,6 @@ const SingleUser = () => {
 
   const fetchData = async () => {
     try {
-      console.log(idUser);
       const { data } = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/users/dashboard`,
         {
@@ -27,7 +26,6 @@ const SingleUser = () => {
           return el;
         }
       });
-      console.log(response);
       setUserResponse(response);
     } catch (error) {
       console.error(error.message);

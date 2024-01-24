@@ -60,6 +60,11 @@
         width: 100%;
         padding: 10px;
         cursor: pointer;
+        background-color: #09f8bc;
+
+        &:hover {
+          background-color: #0bab5b;
+        }
       }
     }
   }
