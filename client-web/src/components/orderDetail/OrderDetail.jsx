@@ -50,10 +50,10 @@ const OrderDetail = ({ listOrders }) => {
           </div>
           <div className="half">
             <div className="description">
-              <p className="price"> Ordered List:</p>
+              <p > Ordered List:</p>
               {listOrders?.productOrder?.map((product, index) => (
                 <div key={index}>
-                  <h1 className="text-lg text-gray-700 dark:text-black md:text-2xl">
+                  <h1>
                     - Product {index + 1} :
                   </h1>
                   <p>Name: {product.name}</p>

@@ -40,7 +40,7 @@ const AddUser = (props) => {
 
       Swal.fire({
         icon: "success",
-        title: "Product added successfully!",
+        title: "User added successfully!",
         timer: 1000,
         timerProgressBar: true,
 
@@ -56,7 +56,7 @@ const AddUser = (props) => {
       setLoading(false);
       Swal.fire({
         icon: "error",
-        title: "Error adding product. Please check the form.",
+        title: "Error adding user. Please check the form.",
       });
     }
   };
