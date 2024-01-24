@@ -64,7 +64,7 @@ const UpdateStore = (props) => {
             }
             Swal.fire({
                 icon: 'success',
-                title: 'Product has been updated',
+                title: 'Store has been updated',
                 timerProgressBar: true,
                 willClose: () => {
                     setLoading(false);
