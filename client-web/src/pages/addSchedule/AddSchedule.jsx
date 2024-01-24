@@ -77,7 +77,6 @@ const AddSchedule = (props) => {
         },
       });
 
-
       if (response.status === 201) {
         toast.success("Schedule added successfully!");
         props.setOpen(false);
@@ -86,18 +85,37 @@ const AddSchedule = (props) => {
         toast.error("Failed to add schedule");
       }
     } catch (error) {
-      console.log(error);
-      toast.error("Error adding schedule. Please check the form.");
+      if (error.response && error.response.status === 400) {
+        if (
+          error.response.data &&
+          error.response.data.message === "Schedule already exists"
+        ) {
+          toast.error(
+            "Schedule already exists. Please choose a different time."
+          );
+        } else if (
+          error.response.data &&
+          error.response.data.message ===
+            "Store with that ID has not been verified"
+        ) {
+          toast.error(
+            "Store has not been verified. Please verify the store before scheduling."
+          );
+        } else {
+          toast.error("Bad request. Please check the form.");
+        }
+      } else {
+        toast.error("Error adding schedule. Please check the form.");
+      }
     }
   };
-
   return (
     <div className="add">
       <div className="modal">
         <span className="close" onClick={() => props.setOpen(false)}>
           X
         </span>
-        <h1>Add new Store</h1>
+        <h1>Add new Schedule</h1>
         <form onSubmit={handleSubmit}>
           <div className="item">
             <label>Store</label>

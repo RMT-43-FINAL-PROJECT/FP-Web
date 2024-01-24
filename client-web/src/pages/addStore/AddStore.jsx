@@ -4,10 +4,31 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./addStore.scss";
 import Swal from "sweetalert2";
+import TestingMap from "../testing-maps/testingMap";
 
 const AddStore = (props) => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const [showMap, setShowMap] = useState(false);
+
+  const handleMapButtonClick = () => {
+    event.preventDefault();
+    setShowMap(true);
+  };
+
+  const handleMapClose = () => {
+    setShowMap(true);
+  };
+
+  const handleMapClick = (selectedPosition) => {
+    setStoreInput({
+      ...storeInput,
+      longitude: selectedPosition.lng,
+      latitude: selectedPosition.lat,
+    });
+    handleMapClose();
+  };
+
   //const position = useContext blablablabla
   const [storeInput, setStoreInput] = useState({
     name: "",
@@ -28,6 +49,14 @@ const AddStore = (props) => {
     setStoreInput({
       ...storeInput,
       [name]: value,
+    });
+  };
+
+  const handleMarkerClick = (selectedPosition) => {
+    setStoreInput({
+      ...storeInput,
+      longitude: selectedPosition.lng,
+      latitude: selectedPosition.lat,
     });
   };
 
@@ -63,14 +92,14 @@ const AddStore = (props) => {
 
       Swal.fire({
         icon: "success",
-        title: "Product added successfully!",
+        title: "Store added successfully!",
         timerProgressBar: true,
 
         willClose: () => {
           setLoading(false);
           props.setOpen(false);
           window.location.reload();
-          navigate("/products");
+          navigate("/stores");
         },
       });
     } catch (error) {
@@ -78,7 +107,7 @@ const AddStore = (props) => {
       setLoading(false);
       Swal.fire({
         icon: "error",
-        title: "Error adding product. Please check the form.",
+        title: "Error adding store. Please check the form.",
       });
     }
   };
@@ -101,7 +130,8 @@ const AddStore = (props) => {
               name="longitude"
               type="number"
               id="longitude"
-              onChange={handleChange}
+              value={storeInput.longitude}
+              readOnly
             />
           </div>
           <div className="item">
@@ -110,7 +140,8 @@ const AddStore = (props) => {
               name="latitude"
               type="number"
               id="latitude"
-              onChange={handleChange}
+              value={storeInput.latitude}
+              readOnly
             />
           </div>
           <div className="item">
@@ -163,6 +194,23 @@ const AddStore = (props) => {
             <label>Image</label>
             <input type="file" accept="image/*" onChange={handleImageChange} />
           </div>
+          {showMap && (
+            <TestingMap
+              position={
+                storeInput.longitude && storeInput.latitude
+                  ? { lng: storeInput.longitude, lat: storeInput.latitude }
+                  : null
+              }
+              onMapClick={handleMapClick}
+              onMarkerClick={handleMarkerClick}
+              setStoreInput={(newStoreInput) => setStoreInput(newStoreInput)}
+            />
+          )}
+          <div className="item">
+            <label>Maps</label>
+            <button onClick={handleMapButtonClick}>Open Map</button>
+          </div>
+
           <button type="submit" disabled={loading}>
             {loading ? "Loading..." : "Send"}
           </button>

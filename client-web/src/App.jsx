@@ -38,9 +38,9 @@ function App() {
             <Menu />
           </div>
           <div className="contentContainer">
-            <QueryClientProvider client={queryClient}>
+
               <Outlet />
-            </QueryClientProvider>
+
           </div>
         </div>
         <Footer />

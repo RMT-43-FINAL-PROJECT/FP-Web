@@ -3,29 +3,48 @@ import { GoogleMap, useLoadScript, OverlayView } from "@react-google-maps/api";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 const mapContainerStyle = {
-  width: "80vw",
-  height: "80vh",
+  width: "25vw",
+  height: "20vh",
 };
 const center = {
   lat: -7.997595650650975, // default latitude
   lng: 112.70142089431876, // default longitude
 };
 
-export default function TestingMap() {
+export default function TestingMap({onMapClick, onMarkerClick, setStoreInput}) {
   const [position, setPosition] = useState(null);
+
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyCwtwSZmkOwajOw3Kqn00WynmVqwPUf_gQ",
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY
   });
 
   console.log(position);
 
   function handleMapClick(event) {
-    setPosition({
+    const newPosition = {
       lat: event.latLng.lat(),
       lng: event.latLng.lng(),
-    });
-    setContext;
+    };
+    setPosition(newPosition);
+
+    if (onMapClick && typeof onMapClick === 'function') {
+      onMapClick(newPosition);
+    }
+
+    setStoreInput((prevStoreInput) => ({
+      ...prevStoreInput,
+      longitude: newPosition.lng,
+      latitude: newPosition.lat,
+    }));
   }
+
+  function handleMarkerClick() {
+    if (onMarkerClick && typeof onMarkerClick === 'function' && position) {
+      onMarkerClick(position);
+    }
+  }
+
+
 
   if (loadError) {
     return <div>Error loading maps</div>;
@@ -49,11 +68,13 @@ export default function TestingMap() {
           <OverlayView
             position={position}
             mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+            onClick={handleMarkerClick}
           >
             <div
               style={{
                 position: "absolute",
                 transform: "translate(-50%, -50%)",
+                cursor: "pointer",
               }}
             >
               {iconComponent}
