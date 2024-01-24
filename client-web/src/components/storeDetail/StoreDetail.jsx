@@ -1,20 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "./storeDetail.scss";
+import UpdateStore from "../updateStore/UpdateStore";
 
 const StoreDetail = ({ listStore }) => {
+  const [open, setOpen] = useState(false);
   const getStatus = () => {
-    return listStore.status ? "Verified" : "unverified";
+    return listStore.status === 'verified' ? "Verified" : "Unverified";
   };
-  const formattedTime = new Date(listStore?.createdAt).toLocaleString("en-US", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    second: "numeric",
-    timeZoneName: "short",
-  });
+  const event = new Date(listStore.joinDate);
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+  const formattedTime = event.toLocaleDateString('id-ID', options)
 
   const renderCoordinates = () => {
     if (listStore.location && listStore.location.coordinates) {
@@ -74,10 +74,11 @@ const StoreDetail = ({ listStore }) => {
             <p> address: {listStore.address}</p>
           </div>
           <div class="action">
-            <button onClick={() => setOpen(true)}>Edit Status</button>
+            <button onClick={() => setOpen(true)}>Edit Store</button>
           </div>
         </div>
       </div>
+      {open && <UpdateStore slug="product" setOpen={setOpen} />}
     </>
   );
 };
