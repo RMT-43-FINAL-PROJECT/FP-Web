@@ -31,7 +31,7 @@ const TopOrder = () => {
               <img src={order.image} alt="" />
               <div className="orderText">
                 <span className="name">{order.name}</span>
-                <span className="soldQty">{order.confirmedOrderQty} bill</span>
+                {/* <span className="soldQty">{order.confirmedOrderQty} bill</span> */}
               </div>
             </div>
             <span className="confirmedOrderValue">
