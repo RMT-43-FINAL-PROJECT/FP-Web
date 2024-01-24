@@ -8,7 +8,7 @@ import axios from "axios";
 const UserTable = (props) => {
   const { baseRoute, entityRoute } = props;
   const [deleteItemId, setDeleteItemId] = useState(null);
-  
+
   const handleDeleteConfirmation = (itemId) => {
     setDeleteItemId(itemId);
 
@@ -29,11 +29,9 @@ const UserTable = (props) => {
     });
   };
 
-
   const handleDelete = async (_id) => {
     try {
-      console.log("Deleting user with ID:", _id);
-  
+
       const response = await axios({
         method: "delete",
         url: `${props.deleteUrl}/${_id}`,
@@ -42,9 +40,8 @@ const UserTable = (props) => {
           Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
       });
-  
-      console.log("Delete response:", response);
-  
+
+
       if (response.status === 200) {
         if (props.onDelete) {
           props.onDelete();
@@ -56,18 +53,14 @@ const UserTable = (props) => {
       } else {
         console.error("Delete request failed with status:", response.status);
       }
-  
     } catch (error) {
       console.error("Error deleting user:", error);
-  
-      if (error.response) {
-        console.log("Server res data:", error.response.data);
-        console.log("Server res status:", error.response.status);
-        console.log("Server res headers:", error.response.headers);
-      }
-  
+
+
       if (props.onError) {
-        props.onError(error.response ? error.response.data.message : error.message);
+        props.onError(
+          error.response ? error.response.data.message : error.message
+        );
       }
     }
   };
@@ -79,10 +72,13 @@ const UserTable = (props) => {
     renderCell: (params) => {
       return (
         <div className="action">
-          <Link to={`/${baseRoute}/${entityRoute}/${params.row._id}`}>
+          {/* <Link to={`/${baseRoute}/${entityRoute}/${params.row._id}`}>
             <img src="/view.svg" alt="" />
-          </Link>
-          <div className="delete" onClick={() => handleDeleteConfirmation(params.row._id)}>
+          </Link> */}
+          <div
+            className="delete"
+            onClick={() => handleDeleteConfirmation(params.row._id)}
+          >
             <img src="/delete.svg" alt="" />
           </div>
         </div>

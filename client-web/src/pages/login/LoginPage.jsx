@@ -13,7 +13,6 @@ const LoginPage = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    // console.log(name, value);
 
     setInput({
       ...input,
@@ -29,17 +28,15 @@ const LoginPage = () => {
         url: import.meta.env.VITE_BASE_URL + "/users/login",
         data: input,
       });
-      console.log(data);
+
       localStorage.access_token = data.access_token;
       localStorage.setItem("_id", data._id);
-      // console.log(data);
+
       navigate("/");
     } catch (error) {
       console.log(error);
     }
   };
-
-  console.log(input);
 
   return (
     <form className="form" autoComplete="off" onSubmit={handleSubmit}>
