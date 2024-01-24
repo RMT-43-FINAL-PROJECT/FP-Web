@@ -105,7 +105,7 @@ const Products = () => {
     <div className="products">
       <div className="info">
         <h1>Products Management</h1>
-        <button onClick={() => setOpen(true)}>Add New Products</button>
+        <button className="logout-btn" onClick={() => setOpen(true)}>Add New Products</button>
       </div>
       {loading ? (
         <Spinner />

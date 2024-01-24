@@ -87,7 +87,7 @@ const Users = () => {
     <div className="products">
       <div className="info">
         <h1>Users Management</h1>
-        <button onClick={() => setOpen(true)}>Add New Users</button>
+        <button className="logout-btn" onClick={() => setOpen(true)}>Add New Users</button>
       </div>
       {loading ? (
         <Spinner />
