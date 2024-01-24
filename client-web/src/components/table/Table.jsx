@@ -45,6 +45,7 @@ const Table = (props) => {
         icon: "success",
         title: "Deleted successfully!",
       });
+      window.location.reload();
     } catch (error) {
       if (
         error.response.status === 400 &&
