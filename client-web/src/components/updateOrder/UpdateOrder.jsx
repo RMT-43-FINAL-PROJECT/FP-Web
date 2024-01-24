@@ -46,7 +46,7 @@ const UpdateOrder = (props) => {
     
 
     return (
-        <div className="add">
+        <div className="addOrder">
             <div className="modal">
                 <span className="close" onClick={() => props.setOpen(false)}>
                     X
