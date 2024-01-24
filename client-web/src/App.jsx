@@ -1,10 +1,15 @@
-import { Outlet, RouterProvider, createBrowserRouter, redirect } from "react-router-dom";
+import {
+  Outlet,
+  RouterProvider,
+  createBrowserRouter,
+  redirect,
+} from "react-router-dom";
 
 import Navbar from "./components/navbar/Navbar";
 import Menu from "./components/menu/Menu";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import LoginPage from "./pages/login/LoginPage";
-import Home from './pages/home/Home'
+import Home from "./pages/home/Home";
 import Footer from "./components/footer/Footer";
 import "./styles/global.scss";
 import Products from "./pages/products/Products";
@@ -19,50 +24,51 @@ import SingleStore from "./pages/singleStore/SingleStore";
 import SingleUser from "./pages/singleUser/SingleUser";
 import SingleSchedule from "./pages/singleSchedule/SingleSchedule";
 import SingleOrder from "./pages/singleOrder/SingleOrder";
+import TestingMap from "./pages/testing-maps/testingMap";
 
 const queryClient = new QueryClient();
 
 function App() {
   const Layout = () => {
     return (
-        <div className="main">
-          <Navbar />
-          <div className="container">
-            <div className="menuContainer">
-              <Menu />
-            </div>
-            <div className="contentContainer">
-              <QueryClientProvider client={queryClient}>
-                <Outlet />
-              </QueryClientProvider>
-            </div>
+      <div className="main">
+        <Navbar />
+        <div className="container">
+          <div className="menuContainer">
+            <Menu />
           </div>
-          <Footer />
+          <div className="contentContainer">
+            <QueryClientProvider client={queryClient}>
+              <Outlet />
+            </QueryClientProvider>
+          </div>
         </div>
+        <Footer />
+      </div>
     );
   };
 
   const authHome = () => {
-    const access_token = localStorage.access_token
-    if(!access_token) {
-      throw redirect('/login')
+    const access_token = localStorage.access_token;
+    if (!access_token) {
+      throw redirect("/login");
     }
-    return null
-  }
+    return null;
+  };
 
   const authLogin = () => {
-    const access_token = localStorage.access_token
-    if(access_token) {
-      throw redirect('/')
+    const access_token = localStorage.access_token;
+    if (access_token) {
+      throw redirect("/");
     }
-    return null
-  }
+    return null;
+  };
 
   const router = createBrowserRouter([
     {
       path: "/login",
       element: <LoginPage />,
-      loader: authLogin
+      loader: authLogin,
     },
     {
       path: "/",
@@ -83,7 +89,7 @@ function App() {
         },
         {
           path: "/users",
-          element: <Users/>
+          element: <Users />,
         },
         {
           path: "/users/finduser/:idUser",
@@ -91,27 +97,31 @@ function App() {
         },
         {
           path: "/stores",
-          element: <Stores/>
+          element: <Stores />,
         },
         {
           path: "/stores/:id",
-          element: <SingleStore/>
+          element: <SingleStore />,
         },
         {
           path: "/orders",
-          element: <Orders/>
+          element: <Orders />,
         },
         {
           path: "/orders/:id",
-          element: <SingleOrder/>
+          element: <SingleOrder />,
         },
         {
           path: "/schedules",
-          element: <Schedules/>
+          element: <Schedules />,
         },
         {
           path: "/schedules/:scheduleId",
-          element: <SingleSchedule/>
+          element: <SingleSchedule />,
+        },
+        {
+          path: "/testing/map",
+          element: <TestingMap />,
         },
       ],
     },
