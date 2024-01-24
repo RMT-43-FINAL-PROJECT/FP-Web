@@ -54,10 +54,18 @@ const AddUser = (props) => {
     } catch (error) {
       console.error(error);
       setLoading(false);
-      Swal.fire({
-        icon: "error",
-        title: "Error adding user. Please check the form.",
-      });
+
+      if (error.response && error.response.data && error.response.data.message) {
+        Swal.fire({
+          icon: "error",
+          title: error.response.data.message,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error adding store. Please try again later.",
+        });
+      }
     }
   };
 
