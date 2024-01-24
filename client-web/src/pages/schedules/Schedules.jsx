@@ -51,10 +51,10 @@ const Schedules = () => {
       key === "storeName"
         ? "Store Name"
         : key === "userName"
-          ? "User Name"
-          : key === "address"
-            ? "address"
-            : key.charAt(0).toUpperCase() + key.slice(1),
+        ? "User Name"
+        : key === "address"
+        ? "address"
+        : key.charAt(0).toUpperCase() + key.slice(1),
     width: key === "status" ? 200 : 220,
   }));
 
@@ -70,15 +70,15 @@ const Schedules = () => {
       const status = isCompleted ? "Completed" : "Not Completed";
       const event = new Date(time);
       const options = {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'numeric',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-        timeZoneName: 'short',
+        weekday: "long",
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        timeZoneName: "short",
       };
-      const formattedTime = event.toLocaleDateString('id-ID', options)
+      const formattedTime = event.toLocaleDateString("id-ID", options);
       return {
         _id,
         storeName,
@@ -90,12 +90,13 @@ const Schedules = () => {
     });
   // console.log("response",filteredSchedules);
 
-
   return (
     <div className="products">
       <div className="info">
         <h1>Schedules Management</h1>
-        <button className="logout-btn" onClick={() => setOpen(true)}>Add New Schedule</button>
+        <button className="logout-btn" onClick={() => setOpen(true)}>
+          Add New Schedule
+        </button>
       </div>
       {loading ? (
         <Spinner />
@@ -103,7 +104,9 @@ const Schedules = () => {
         <Table slug="schedules" columns={columns} rows={filteredSchedules} />
       )}
 
-      {open && <AddSchedule slug="product" columns={columns} setOpen={setOpen} />}
+      {open && (
+        <AddSchedule slug="product" columns={columns} setOpen={setOpen} />
+      )}
     </div>
   );
 };

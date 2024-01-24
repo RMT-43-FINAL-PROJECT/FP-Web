@@ -64,10 +64,10 @@ const AddProduct = (props) => {
         },
       });
 
-      console.log(data);
+
       Swal.fire({
-        icon: 'success',
-        title: 'Product added successfully!',
+        icon: "success",
+        title: "Product added successfully!",
         timerProgressBar: true,
 
         willClose: () => {
@@ -87,7 +87,6 @@ const AddProduct = (props) => {
     }
   };
 
-  console.log(input);
   return (
     <div className="add">
       <div className="modal">

@@ -46,11 +46,6 @@ const Table = (props) => {
         title: "Deleted successfully!",
       });
     } catch (error) {
-      if (error.response) {
-        console.log("Server res data:", error.response.data);
-        console.log("Server res status:", error.response.status);
-        console.log("Server res headers:", error.response.headers);
-      }
       if (
         error.response.status === 400 &&
         error.response.data.message === "Unable to delete confirmed Order"

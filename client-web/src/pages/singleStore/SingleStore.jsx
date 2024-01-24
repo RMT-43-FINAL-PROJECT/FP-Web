@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 // import "./singleStore.scss";
 import StoreDetail from "../../components/storeDetail/StoreDetail";
 
-
 const SingleStore = () => {
   const [listStore, setListStore] = useState([]);
 
@@ -21,7 +20,6 @@ const SingleStore = () => {
           Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
       });
-      console.log("Data API:", data);
       // data pada apinya nested
       setListStore(data);
     } catch (error) {
