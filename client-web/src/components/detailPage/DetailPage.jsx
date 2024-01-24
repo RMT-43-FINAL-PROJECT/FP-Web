@@ -1,12 +1,14 @@
+import { useState } from "react";
+import UpdateProduct from "../updateProduct/UpdateProduct";
 import "./detailPage.scss";
 
 const DetailPage = ({ listProducts }) => {
+  const [open, setOpen] = useState(false);
+
   const getStatus = () => {
     return listProducts.isAvailable ? "In Stock" : "Out of Stock";
   };
   return (
-    <body>
-      <main>
         <div class="card">
           <div class="card__title">
             <div class="icon">
@@ -15,6 +17,7 @@ const DetailPage = ({ listProducts }) => {
               </a>
             </div>
             <h3>Products Details</h3>
+            {open && <UpdateProduct slug="product" setOpen={setOpen} />}
           </div>
           <div class="card__body">
             <div class="half">
@@ -54,12 +57,10 @@ const DetailPage = ({ listProducts }) => {
               <p>Discound Percent : {listProducts.discPercent}%</p>
             </div>
             <div class="action">
-              <button type="button">Update</button>
+              <button onClick={() => setOpen(true)}>Edit Product</button>
             </div>
           </div>
         </div>
-      </main>
-    </body>
   );
 };
 
