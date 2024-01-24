@@ -26,7 +26,7 @@ const Navbar = () => {
     <div className="navbar">
       <div className="logo">
         <img src="logoFix.svg" alt="" />
-        <span>SAHABAR PASAR</span>
+        <span>SAHABAT PASAR</span>
       </div>
       <div className="icons">
         <img src="/app.svg" alt="" className="icon" />

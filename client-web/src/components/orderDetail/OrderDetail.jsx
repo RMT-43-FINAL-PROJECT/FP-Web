@@ -36,10 +36,40 @@ const OrderDetail = ({ listOrders }) => {
         <div className="card__body">
           <div className="half">
             <div className="featured_text">
-              <h1> {storeName}</h1>
+              <h1>{storeName}</h1>
 
-              <p className="price"></p>
-              <p className="price">
+              <div className="image"></div>
+              <div className="reviews"></div>
+              <span className="stock">
+                <span>
+                  <br />
+                  Sales : {salesName}
+                </span>
+              </span>
+            </div>
+          </div>
+          <div className="half">
+            <div className="description">
+              <p className="price"> Ordered List:</p>
+              {listOrders?.productOrder?.map((product, index) => (
+                <div key={index}>
+                  <h1 className="text-lg text-gray-700 dark:text-black md:text-2xl">
+                    - Product {index + 1} :
+                  </h1>
+                  <p>Name: {product.name}</p>
+                  <p>Category: {product.category}</p>
+                  <p>Qty Sold: {product.qtySold} pcs</p>
+                  <p>
+                    total Price perItem :{" "}
+                    {new Intl.NumberFormat("id-ID", {
+                      style: "currency",
+                      currency: "IDR",
+                    }).format(product.billPerItem)}
+                  </p>
+                </div>
+              ))}
+              <br />
+              <p>
                 Total Bill :
                 {new Intl.NumberFormat("id-ID", {
                   style: "currency",
@@ -47,25 +77,8 @@ const OrderDetail = ({ listOrders }) => {
                 }).format(listOrders.totalBill)}
               </p>
             </div>
-
-            <div className="image"></div>
-            <div className="reviews"></div>
-            <span className="stock">
-              <span>
-                {" "}
-                <br />
-                Sales : {salesName}
-              </span>
-            </span>
-          </div>
-
-          <div className="half">
-            <div className="description">
-              <p></p>
-            </div>
           </div>
         </div>
-
         <div className="card__footer">
           <div className="recommend">
             <h3>Status : {listOrders.status}</h3>
