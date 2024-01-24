@@ -1,0 +1,645 @@
+{
+  "users": [
+    {
+      "_id": "65a7818f64e52af4a8c7027b",
+      "name": "Muhammad Faisal Yudiansah",
+      "photo": "https://static.vecteezy.com/system/resources/previews/026/434/409/non_2x/default-avatar-profile-icon-social-media-user-photo-vector.jpg",
+      "joinDate": "2024-01-17T07:28:15.877+00:00",
+      "email": "faisal@gmail.com",
+      "password": "$2a$10$dt2.f0LSB2uHFnfARvE52ukq9MmKlSbJ0zfIkQyMXIDJTnzJU3b2G",
+      "mobilePhone": "081927380033",
+      "address": "Jakarta Timur",
+      "role": "admin",
+      "createdAt": "2024-01-17T07:28:15.877+00:00",
+      "updatedAt": "2024-01-17T07:28:15.877+00:00"
+    },
+    {
+      "_id": "65a7a0387948c4bb3153a8b0",
+      "name": "Cristiano Ronaldo",
+      "photo": "https://static.vecteezy.com/system/resources/previews/026/434/409/non_2x/default-avatar-profile-icon-social-media-user-photo-vector.jpg",
+      "joinDate": "2024-01-17T09:39:04.304+00:00",
+      "email": "ronaldo@gmail.com",
+      "password": "$2a$10$Z4x8G6u1UBaF73iISlksguqvSgtlYwGVRgNzHtuqUfONth9f/2jx2",
+      "mobilePhone": "081927380033",
+      "address": "Portugal",
+      "role": "sales",
+      "createdAt": "2024-01-17T09:39:04.304+00:00",
+      "updatedAt": "2024-01-17T09:39:04.304+00:00"
+    },
+    {
+      "_id": "65a7b2713901c57dc7d6e148",
+      "name": "Lionel Messi",
+      "photo": "https://static.vecteezy.com/system/resources/previews/026/434/409/non_2x/default-avatar-profile-icon-social-media-user-photo-vector.jpg",
+      "joinDate": "2024-01-17T10:56:49.197+00:00",
+      "email": "messi@gmail.com",
+      "password": "$2a$10$joSD9RnqZI4WvKXbr4tTBuhaTBzewFfJEFkN0UztfVNVMzaECOGzC",
+      "mobilePhone": "081927380033",
+      "address": "Argentina",
+      "role": "sales",
+      "createdAt": "2024-01-17T10:56:49.197+00:00",
+      "updatedAt": "2024-01-17T10:56:49.197+00:00"
+    },
+    {
+      "_id": "65a7d5dee935cf773008868a",
+      "name": "Admin",
+      "photo": "https://static.vecteezy.com/system/resources/previews/026/434/409/non_2x/default-avatar-profile-icon-social-media-user-photo-vector.jpg",
+      "joinDate": "2024-01-17T13:27:58.398+00:00",
+      "email": "admin@gmail.com",
+      "password": "$2a$10$Fyhe31uY2uyAmT9Eq4CY3ek6dH9/4b65Ykt8ukYdc5czhjxf19PUa",
+      "mobilePhone": "081927380033",
+      "address": "Indonesia",
+      "role": "admin",
+      "createdAt": "2024-01-17T13:27:58.398+00:00",
+      "updatedAt": "2024-01-17T13:27:58.398+00:00"
+    },
+    {
+      "_id": "65aa5cbdc83422f844718e5c",
+      "name": "Akun Tumbal",
+      "photo": "https://res.cloudinary.com/do3tjux3f/image/upload/v1705771861/users/Akun%20Tumbal-photo.jpg",
+      "joinDate": "2024-01-19T11:27:57.559+00:00",
+      "email": "tumbal@gmail.com",
+      "password": "12345",
+      "mobilePhone": "081927380033",
+      "address": "Indonesia",
+      "role": "sales",
+      "createdAt": "2024-01-19T11:27:57.559+00:00",
+      "updatedAt": "2024-01-19T11:27:57.559+00:00"
+    }
+  ],
+
+  "products": [
+    {
+      "name": "Citra",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/34834f8b9eb575020b518d5c27e3f4164b762263-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Beauty & Wellbeing",
+      "stock": 10000,
+      "price": 32000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Clear",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/9ae857a0c457f83d68373a7eba720928f89d7905-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Beauty & Wellbeing",
+      "stock": 10000,
+      "price": 41000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Clear Men",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/558320bfc0afd97d87c2364c52172bece8ee9b46-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Beauty & Wellbeing",
+      "stock": 10000,
+      "price": 45000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Sunsilk",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/6a452ea6283ed10c84efe822b24271d5f4f801df-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Beauty & Wellbeing",
+      "stock": 10000,
+      "price": 23000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Pepsodent",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/65b22ce8975ef008d451ed65fadb333bf65c29bf-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Beauty & Wellbeing",
+      "stock": 10000,
+      "price": 13000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Pond's",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/a877f83d2694f439080c3e8348915db3e04f9aee-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Beauty & Wellbeing",
+      "stock": 10000,
+      "price": 31000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Pond's Men",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/d8447f3984055cf69641d5497c63c90bdc6da46e-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Beauty & Wellbeing",
+      "stock": 10000,
+      "price": 27000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Axe",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/b953900d039e64d54e396b500343f64065fe3f62-280x280.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Personal Care",
+      "stock": 10000,
+      "price": 25000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Close Up",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/990a82ebf4b2895341b0a7b98d85c0b1c3819956-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Personal Care",
+      "stock": 10000,
+      "price": 19000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Dove",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/db75ae243befa00aa3cdb2eaf546b0c3aa2ab5d2-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Personal Care",
+      "stock": 10000,
+      "price": 28000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "LUX",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/7c27a655d196790b599f27b381409252a299f4d0-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Personal Care",
+      "stock": 10000,
+      "price": 29000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Lifebuoy",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/3eb75afaddb348d1d74a1683a49a0aab5664e8c3-280x280.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Personal Care",
+      "stock": 10000,
+      "price": 34000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Rexona",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/661e0339b7e64e136588af7fed9b3447f46e6b0a-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Personal Care",
+      "stock": 10000,
+      "price": 19000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "St. Ives",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/ff0733e1c4d566f0f54d55b49a12272101be5174-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Personal Care",
+      "stock": 10000,
+      "price": 40000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Cif",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/5b3550003de32697bef8264cca1e4e222dab891e-1920x1080.jpg?rect=420,0,1080,1080&w=1400&h=1400&fit=crop&auto=format",
+      "category": "Home Care",
+      "stock": 10000,
+      "price": 22000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Molto",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/3f710b05973ec92935b2cdaa44789a1d820674ae-280x280.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Home Care",
+      "stock": 10000,
+      "price": 41000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Rinso",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/c662c572b333f1617ee01c42219f84816656b724-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Home Care",
+      "stock": 10000,
+      "price": 13000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Sunlight",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/98d23cae1873f3875c26f4fd4b47585bb40e4c07-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Home Care",
+      "stock": 10000,
+      "price": 7000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Superpell",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/d176bcd8bfe50e36c57f94b43d20f912c6364d69-280x280.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Home Care",
+      "stock": 10000,
+      "price": 11000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Vixal",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/06fb76f8310c166216f50755d4ea05bea2af35e4-280x280.png?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Home Care",
+      "stock": 10000,
+      "price": 20000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Wipol",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/b09f6eba971040dd16a4facfd234f4d7d2e8a89e-280x280.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Home Care",
+      "stock": 10000,
+      "price": 22000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Lipton",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/d019bcbfa2df1f00506bb9cefafb0ca3482c7ec4-500x499.png?rect=1,0,499,499&w=1400&h=1400&fit=crop&auto=format",
+      "category": "Nutrition",
+      "stock": 10000,
+      "price": 17000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Bango",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/82f6a59991f5e59abdf85a11228ac8c0f74ba189-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Nutrition",
+      "stock": 10000,
+      "price": 15000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Buavita",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/18fde71cd8fa5407d5e39d41ded8cb2468a3ff88-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Nutrition",
+      "stock": 10000,
+      "price": 19000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Hellmann's",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/8fe76fd805ab71155fd402e9a90e584e36231910-1080x1080.png?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Nutrition",
+      "stock": 10000,
+      "price": 20000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Jawara",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/8c2b3227172b398afad69c7db2321a4490a89577-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Nutrition",
+      "stock": 10000,
+      "price": 5000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Royco",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/3e38e1a8c46fb642eabc7cbb2b041bfa33be4343-280x280.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Nutrition",
+      "stock": 10000,
+      "price": 80000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "sariWangi",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/ffab540555c5b1813bf50e96571c50f45bb81002-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Nutrition",
+      "stock": 10000,
+      "price": 20000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Cornetto",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/911b7828e3d316d99652c1e2792bea6e70fbf5df-1080x1080.png?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Ice Cream",
+      "stock": 10000,
+      "price": 50000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Feast",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/cf6a08765686cfabe671bf0b14606a3aa5bffd88-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Ice Cream",
+      "stock": 10000,
+      "price": 71000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Magnum",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/26b76dc0a16aa60339c059b31babcb45a6d1409a-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Ice Cream",
+      "stock": 10000,
+      "price": 123000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Paddle Pop",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/fbd2dd37bc863796d49c7aafe639a04d02d7ffcb-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Ice Cream",
+      "stock": 10000,
+      "price": 69000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Wall's",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/d7643b8e4074fa83e7d99a873929d00f1597b8d0-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Ice Cream",
+      "stock": 10000,
+      "price": 87000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Viennetta",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/8af559b2d3710db4fadcc8adf8a92d02000b3560-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Ice Cream",
+      "stock": 10000,
+      "price": 59000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    },
+    {
+      "name": "Populaire",
+      "image": "https://cdn.sanity.io/images/92ui5egz/production/56c08f0f8f84bf1781527fde26d741926607b559-1080x1080.jpg?w=1400&h=1400&fit=crop&auto=format",
+      "category": "Ice Cream",
+      "stock": 10000,
+      "price": 40000,
+      "discQty": 10,
+      "discPercent": 5,
+      "isAvailable": true,
+      "createdAt": "2023-12-15T15:32:06.350Z",
+      "updatedAt": "2024-03-18T14:47:12.101Z"
+    }
+  ],
+
+  "stores": [
+    {
+      "name": "Toko Pasar Kue Subuh Senen",
+      "location": {
+        "longitude": 106.84318895631226,
+        "latitude": -6.1763379896884425
+      },
+      "photo": "https://lh3.googleusercontent.com/p/AF1QipMtAGnrA7_nDzexZP-5Rt0ZRVP-_OtB51uhptWo=s680-w680-h510",
+      "joinDate": "2024-01-13T13:33:59.284+00:00",
+      "address": "Pasar senen. Kec. Senen, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta",
+      "ownerName": "Arif Setiawan",
+      "mobilePhone": "+6281938002093",
+      "status": "verified",
+      "createdAt": "2024-01-13T13:33:59.284+00:00",
+      "updatedAt": "2024-01-13T13:33:59.284+00:00"
+    },
+    {
+      "name": "Toko Kue Bikang Peneleh",
+      "location": {
+        "longitude": 106.84236064029864,
+        "latitude": -6.175995746149362
+      },
+      "photo": "https://lh3.googleusercontent.com/p/AF1QipMu8bQYIHCAJBKdehM5vqy6lZL9Uvu06O4soliZ=s680-w680-h510",
+      "joinDate": "2024-01-14T14:44:59.284+00:00",
+      "address": "Pasar senen, Proyek Senen Blok III, Kec. Senen, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta",
+      "ownerName": "Ibu Ainun",
+      "mobilePhone": "+6283100930300",
+      "status": "unverified",
+      "createdAt": "2024-01-14T14:44:59.284+00:00",
+      "updatedAt": "2024-01-14T14:44:59.284+00:00"
+    },
+    {
+      "name": "Toko Yung Fan",
+      "location": {
+        "longitude": 106.84272380155501,
+        "latitude": -6.176143431879042
+      },
+      "photo": "https://lh3.googleusercontent.com/p/AF1QipNCUiyQnHUOny41ObRW6UwW8XcIPMsFkLQewqno=s680-w680-h510",
+      "joinDate": "2024-01-15T15:55:59.284+00:00",
+      "address": "Pasar senen Blok III. Kec. Senen, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta",
+      "ownerName": "Andreas Eka",
+      "mobilePhone": "+6281903440303",
+      "status": "verified",
+      "createdAt": "2024-01-15T15:55:59.284+00:00",
+      "updatedAt": "2024-01-15T15:55:59.284+00:00"
+    },
+    {
+      "name": "Toko Kue Sumber Sari",
+      "location": {
+        "longitude": 106.84307549863324,
+        "latitude": -6.176495672898673
+      },
+      "photo": "https://lh3.googleusercontent.com/p/AF1QipPCYmq0i7y4wmcUOs0it4PXowOCRtjRxYfDiqpw=s680-w680-h510",
+      "joinDate": "2024-01-16T16:06:59.284+00:00",
+      "address": "Pasar senen, Sentra Kue subuh, Jaya 1&2, lt. Dasar, Senen, Kec. Senen, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10410",
+      "ownerName": "Bu sari inah",
+      "mobilePhone": "+6282203081190",
+      "status": "unverified",
+      "createdAt": "2024-01-16T16:06:59.284+00:00",
+      "updatedAt": "2024-01-16T16:06:59.284+00:00"
+    },
+    {
+      "name": "Toko Kue Royal",
+      "location": {
+        "longitude": 106.84226628050624,
+        "latitude": -6.176041635309103
+      },
+      "photo": "https://lh3.googleusercontent.com/p/AF1QipNVqvR-3e9dFI7fASpVl3E1oBKyzddRI1QnVvkL=s680-w680-h510",
+      "joinDate": "2024-01-17T17:17:59.284+00:00",
+      "address": "Pasar senen, Jl. Senen raya , proyek senen blok 3 Lt. Semi basement CKS 48-49, RW.3, Senen, Kec. Senen, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10410",
+      "ownerName": "Pak yahya",
+      "mobilePhone": "+6281280313378",
+      "status": "verified",
+      "createdAt": "2024-01-17T17:17:59.284+00:00",
+      "updatedAt": "2024-01-17T17:17:59.284+00:00"
+    },
+    {
+      "name": "Toko Ook",
+      "location": {
+        "longitude": 106.80161389558644,
+        "latitude": -6.189489459252219
+      },
+      "photo": "https://lh3.googleusercontent.com/p/AF1QipMsBCDQrPctQsFEMKXVzHMpEv69Z61jcaINInX7=s680-w680-h510",
+      "joinDate": "2024-01-18T18:28:59.284+00:00",
+      "address": "Pasar Slipi. Jl. Terusan Ks. Tubun II B No.4 10, RT.4/RW.2, Slipi, Kec. Palmerah, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11410",
+      "ownerName": "Hellen",
+      "mobilePhone": "+6283134567841",
+      "status": "unverified",
+      "createdAt": "2024-01-18T18:28:59.284+00:00",
+      "updatedAt": "2024-01-18T18:28:59.284+00:00"
+    },
+    {
+      "name": "Toko Haji Abdullah",
+      "location": {
+        "longitude": 106.87160371358618,
+        "latitude": -6.185072644706806
+      },
+      "photo": "https://lh3.googleusercontent.com/p/AF1QipNRNyhCyvxzktFZ6NV2JHY7hK2bQG1-PI15Xnlf=s680-w680-h510",
+      "joinDate": "2024-01-19T19:39:59.284+00:00",
+      "address": "Pasar Rawasari, Jl. Rawasari Barat No.1, RT.2/RW.1, Kampung Rawa, Kec. Cemp. Putih, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10510",
+      "ownerName": "Pak Abdullah",
+      "mobilePhone": "+6281234567815",
+      "status": "verified",
+      "createdAt": "2024-01-19T19:39:59.284+00:00",
+      "updatedAt": "2024-01-19T19:39:59.284+00:00"
+    },
+    {
+      "name": "Toko Khomaini",
+      "location": {
+        "longitude": 106.79593648070963,
+        "latitude": -6.190223033710549
+      },
+      "photo": "https://lh3.googleusercontent.com/p/AF1QipP-yxnCLN-1RX1izW-u0zeccJt8Tz2RgPO3ptgc=s680-w680-h510",
+      "joinDate": "2024-01-20T20:50:59.284+00:00",
+      "address": "Pasar Slipi. Jl. Anggrek Garuda D/I, RT.4/RW.2, Kemanggisan, Kec. Palmerah, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11480",
+      "ownerName": "Khomaini Atun",
+      "mobilePhone": "+6281233220988",
+      "status": "verified",
+      "createdAt": "2024-01-20T20:50:59.284+00:00",
+      "updatedAt": "2024-01-20T20:50:59.284+00:00"
+    },
+    {
+      "name": "Toko Wisma",
+      "location": {
+        "longitude": 106.84042070133611,
+        "latitude": -6.207838015538151
+      },
+      "photo": "https://lh3.googleusercontent.com/p/AF1QipPPXz1jXgcc3NxkkuQAeKpDzKIrSibGvRmKC1p4=s680-w680-h510",
+      "joinDate": "2024-01-21T21:01:59.284+00:00",
+      "address": "Pasar Rumput, Jalan Sultan Agung lantai dasar aka 562, Ps. Manggis, Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12970",
+      "ownerName": "Michael Wisma",
+      "mobilePhone": "+6281234567873",
+      "status": "verified",
+      "createdAt": "2024-01-21T21:01:59.284+00:00",
+      "updatedAt": "2024-01-21T21:01:59.284+00:00"
+    },
+    {
+      "name": "Toko Ud Mudimah",
+      "location": {
+        "longitude": 106.84042079992362,
+        "latitude": -6.207840299179592
+      },
+      "photo": "https://lh3.googleusercontent.com/p/AF1QipMiLD9cjuvLMsrsQdOuF5POgiJ_vuRYSXG6ocvW=s680-w680-h510",
+      "joinDate": "2024-01-22T22:12:59.284+00:00",
+      "address": "Pasar Rumput, Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12970",
+      "ownerName": "Bu Haji Mudimah",
+      "mobilePhone": "+6281234567881",
+      "status": "verified",
+      "createdAt": "2024-01-22T22:12:59.284+00:00",
+      "updatedAt": "2024-01-22T22:12:59.284+00:00"
+    }
+  ]
+}
