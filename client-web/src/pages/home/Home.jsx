@@ -37,6 +37,7 @@ const Home = () => {
     number: 0,
     dataKey: "revenue",
   });
+  const [pieData, setPieData] = useState([]);
 
   async function storeBox() {
     const { data } = await axios({
@@ -78,11 +79,40 @@ const Home = () => {
       number: toRupiah(data.totalConfirmedValue),
     });
   }
+  function fetchPieData() {
+    setPieData([
+      { name: "Store", value: storeBoxInput.number, color: "#00C49F" },
+      { name: "Product", value: productBoxInput.number, color: "#0088FE" },
+      { name: "Order", value: orderBoxInput.number, color: "#FF8042" },
+      {
+        name: "Revenue",
+        value: revenueBoxInput.number,
+        color: "#a103fc",
+      },
+    ]);
+  }
+
   useEffect(() => {
     storeBox();
     productBox();
     orderBox();
   }, []);
+
+  useEffect(() => {
+    if (
+      storeBoxInput.number &&
+      productBoxInput.number &&
+      orderBoxInput.number &&
+      revenueBoxInput.number
+    ) {
+      fetchPieData();
+    }
+  }, [
+    storeBoxInput.number,
+    productBoxInput.number,
+    orderBoxInput.number,
+    revenueBoxInput.number,
+  ]);
 
   return (
     <div className="home">
@@ -95,9 +125,12 @@ const Home = () => {
       <div className="box box1">
         <TopStore />
       </div>
-      <div className="box box4">
-        <PieChartBox />
-      </div>
+
+      {pieData.length === 4 && (
+        <div className="box box4">
+          <PieChartBox data={pieData} />
+        </div>
+      )}
       {/* chart store */}
       <div className="box box2">
         <ChartBox {...storeBoxInput} />
