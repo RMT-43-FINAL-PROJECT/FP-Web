@@ -8,10 +8,11 @@ import Swal from "sweetalert2";
 const AddStore = (props) => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  //const position = useContext blablablabla
   const [storeInput, setStoreInput] = useState({
     name: "",
-    longitude: 112.63070356923028,
-    latitude: -7.986860420618447,
+    longitude: 112.63070356923028, //position.lng
+    latitude: -7.986860420618447, //position.lat
     address: "",
     joinDate: new Date(),
     ownerName: "",
