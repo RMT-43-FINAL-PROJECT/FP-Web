@@ -95,7 +95,7 @@ const Schedules = () => {
     <div className="products">
       <div className="info">
         <h1>Schedules Management</h1>
-        <button onClick={() => setOpen(true)}>Add New Schedule</button>
+        <button className="logout-btn" onClick={() => setOpen(true)}>Add New Schedule</button>
       </div>
       {loading ? (
         <Spinner />

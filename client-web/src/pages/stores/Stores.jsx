@@ -99,7 +99,7 @@ const Stores = () => {
     <div className="products">
       <div className="info">
         <h1>Stores Management</h1>
-        <button onClick={() => setOpen(true)}>Add New Store</button>
+        <button className="logout-btn" onClick={() => setOpen(true)}>Add New Store</button>
       </div>
       {loading ? (
         <Spinner />
