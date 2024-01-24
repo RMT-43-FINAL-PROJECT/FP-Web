@@ -24,7 +24,7 @@ const ChartBox = (props) => {
         </div>
         <h1>{props.number}</h1>
         <Link to="/" style={{ color: props.color }}>
-          This Month
+          {props.period}
         </Link>
       </div>
       <div className="chartInfo">

@@ -15,6 +15,7 @@ const Home = () => {
     title: "Total Stores",
     number: 0,
     dataKey: "stores",
+    period: "All the time",
   });
   const [productBoxInput, setProductBoxInput] = useState({
     color: "skyblue",
@@ -22,6 +23,7 @@ const Home = () => {
     title: "Total Products",
     number: 0,
     dataKey: "products",
+    period: "All the time",
   });
   const [orderBoxInput, setOrderBoxInput] = useState({
     color: "gold",
@@ -29,6 +31,7 @@ const Home = () => {
     title: "Total Orders",
     number: 0,
     dataKey: "orders",
+    period: "This month",
   });
   const [revenueBoxInput, setRevenueBoxInput] = useState({
     color: "teal",
@@ -36,6 +39,7 @@ const Home = () => {
     title: "Total Revenue",
     number: 0,
     dataKey: "revenue",
+    period: "This month",
   });
   const [pieData, setPieData] = useState([]);
 
@@ -77,6 +81,7 @@ const Home = () => {
     setRevenueBoxInput({
       ...revenueBoxInput,
       number: toRupiah(data.totalConfirmedValue),
+      numberPie: data.totalConfirmedValue,
     });
   }
   function fetchPieData() {
@@ -84,11 +89,6 @@ const Home = () => {
       { name: "Store", value: storeBoxInput.number, color: "#00C49F" },
       { name: "Product", value: productBoxInput.number, color: "#0088FE" },
       { name: "Order", value: orderBoxInput.number, color: "#FF8042" },
-      {
-        name: "Revenue",
-        value: revenueBoxInput.number,
-        color: "#a103fc",
-      },
     ]);
   }
 
@@ -102,8 +102,7 @@ const Home = () => {
     if (
       storeBoxInput.number &&
       productBoxInput.number &&
-      orderBoxInput.number &&
-      revenueBoxInput.number
+      orderBoxInput.number
     ) {
       fetchPieData();
     }
@@ -111,7 +110,6 @@ const Home = () => {
     storeBoxInput.number,
     productBoxInput.number,
     orderBoxInput.number,
-    revenueBoxInput.number,
   ]);
 
   return (
@@ -126,7 +124,7 @@ const Home = () => {
         <TopStore />
       </div>
 
-      {pieData.length === 4 && (
+      {pieData.length === 3 && (
         <div className="box box4">
           <PieChartBox data={pieData} />
         </div>
