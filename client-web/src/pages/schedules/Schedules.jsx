@@ -11,6 +11,10 @@ const Schedules = () => {
   const [lisSchedules, setListSchedules] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const handleDeleteSchedule = async () => {
+    await fetchData();
+  };
+
   const fetchSchedules = async () => {
     try {
       const { data } = await axios({
@@ -101,7 +105,13 @@ const Schedules = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <Table slug="schedules" columns={columns} rows={filteredSchedules} />
+        <Table
+          slug="schedules"
+          columns={columns}
+          rows={filteredSchedules}
+          deleteUrl={`${import.meta.env.VITE_BASE_URL}/schedules`}
+          onDelete={handleDeleteSchedule}
+        />
       )}
 
       {open && (
