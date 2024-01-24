@@ -21,7 +21,6 @@ const SingleStore = () => {
           Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
       });
-      console.log("Data API:", data);
       // data pada apinya nested
       setListStore(data);
     } catch (error) {
