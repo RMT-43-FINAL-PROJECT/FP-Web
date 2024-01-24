@@ -4,7 +4,7 @@ import "./pieChartBox.scss";
 const PieChartBox = ({ data }) => {
   return (
     <div className="pieChartBox">
-      <h1>Monthly source</h1>
+      <h1>Chart</h1>
       <div className="chart">
         <ResponsiveContainer width="99%" height={300}>
           <PieChart>
